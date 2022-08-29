@@ -17,8 +17,6 @@ const welcomeMessage = (userName) => {
     "\n\n" +
     "Click <strong>Subscribe to updates</strong> so that the bot can send you latest updates as soon as they are available." +
     "\n\n" +
-    "You can also check <strong>last CRS score</strong> or last 10 scores." +
-    "\n\n" +
     "We wish your immigration to succeed soon! 🍁"
   );
 };
@@ -26,12 +24,5 @@ const welcomeMessage = (userName) => {
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), {
     parse_mode: "HTML",
-    reply_markup: {
-      keyboard: [
-        ["Subscribe to updates"],
-        ["Check last CRS score"],
-        ["Check previous 10 scores"],
-      ],
-    },
   });
 });
