@@ -13,11 +13,12 @@ const welcomeMessage = (userName) => {
   return (
     `🇨🇦 <strong>Welcome, ${userName}!</strong>` +
     "\n\n" +
-    "This is a telegram bot to track Canadian Immigration Scores." +
+    "This is a bot that can help you find necessary info about the immigration to Canada from the official website: canada.ca" +
     "\n\n" +
-    "Click <strong>Subscribe to updates</strong> so that the bot can send you latest updates as soon as they are available." +
+    "Check the commands in the menu to use the bot. " +
+    "Type /subscribe to get notifications of upcoming rounds of invitations." +
     "\n\n" +
-    "We wish your immigration to succeed soon! 🍁"
+    "We wish you a fast and successful immigration process! 🍁"
   );
 };
 
