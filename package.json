@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "nodemon bot.js"
+  },
   "dependencies": {
     "dotenv": "^16.0.1",
     "node-telegram-bot-api": "^0.59.0"
