@@ -1,4 +1,3 @@
-start - Welcome page
 subscribe - Subscribe to get notified about new rounds
 unsubscribe - Unsubscribe
 last - Last CRS score
