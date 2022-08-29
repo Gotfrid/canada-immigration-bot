@@ -1,6 +1,6 @@
 // import packages
-const dotenv = require("dotenv");
-const TelegramBot = require("node-telegram-bot-api");
+import dotenv from "dotenv";
+import TelegramBot from "node-telegram-bot-api";
 
 // read env variables
 dotenv.config();
