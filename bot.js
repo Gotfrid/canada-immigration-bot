@@ -26,3 +26,23 @@ bot.onText(/\/start/, (msg) => {
     parse_mode: "HTML",
   });
 });
+
+bot.onText(/^\/subscribe$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "/subscribe placeholder", {
+    parse_mode: "HTML",
+  });
+});
+
+bot.onText(/^\/unsubscribe$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "/unsubscribe placeholder", {
+    parse_mode: "HTML",
+  });
+});
+
+bot.onText(/^\/last$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "/last placeholder");
+});
+
+bot.onText(/^\/last50$/, (msg) => {
+  bot.sendMessage(msg.chat.id, "/last50 placeholder");
+});
