@@ -63,6 +63,7 @@ const main = async () => {
   console.log("Writing", newRounds.length, "new entries to the DB");
 
   if (newRounds.length === 0) {
+    mongoose.disconnect();
     process.exit(0);
   }
 
@@ -73,9 +74,11 @@ const main = async () => {
         "Tried to write data, but had the following error:\n",
         error
       );
+      mongoose.disconnect();
       process.exit(1);
     } else {
       console.log("New data is saved successfully.");
+      mongoose.disconnect();
       process.exit(0);
     }
   });
