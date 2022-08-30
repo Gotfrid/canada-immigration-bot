@@ -96,7 +96,7 @@ bot.onText(/^\/test$/, (msg) => {
 
 bot.onText(/^\/subscribe$/, async (msg) => {
   console.log("received `subscribe` command");
-  const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
+  const subscriber = await Subscriber.findOne({ chatID: msg.chat.id });
   if (subscriber === null) {
     const newSubscriber = new Subscriber({
       chatID: msg.chat.id,
