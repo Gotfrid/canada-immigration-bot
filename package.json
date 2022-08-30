@@ -7,9 +7,7 @@
     "fetch-data-test": "export MODE=test && node src/mongo/fetchData.js"
   },
   "dependencies": {
-    "ascii-table": "^0.0.9",
     "dotenv": "^16.0.1",
-    "mongodb": "^4.9.0",
     "mongoose": "^6.5.3",
     "node-fetch": "^2.6.7",
     "node-telegram-bot-api": "^0.59.0"
