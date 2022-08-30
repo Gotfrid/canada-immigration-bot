@@ -37,9 +37,10 @@ const welcomeMessage = (userName) => {
   );
 };
 
-const lastRoundMessage = (round) => {
+const lastRoundMessage = (round, includeTitle = false) => {
   return (
-    `Date of round: ${round.drawDateFull}\n` +
+    `${includeTitle ? "🎉 <strong>New round</strong>\n" : ""}` +
+    `Date of round: ${round.drawDateTime}\n` +
     `CRS score: <strong>${round.drawCRS}</strong>\n` +
     `Invitations: ${round.drawSizeStr}`
   );
@@ -146,7 +147,7 @@ if (process.env.MODE === "production") {
   const roundEventEmitter = Round.watch();
   roundEventEmitter.on("change", async (change) => {
     if (change.operationType !== "insert") return;
-    const message = lastRoundMessage(change.fullDocument);
+    const message = lastRoundMessage(change.fullDocument, true);
     const subscribers = await Subscriber.find().select("chatID");
     subscribers.forEach((subscriber) => {
       bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
