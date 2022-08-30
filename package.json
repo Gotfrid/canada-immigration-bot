@@ -11,6 +11,7 @@
     "fetch-data-test": "export MODE=test && node src/mongo/fetchData.js"
   },
   "dependencies": {
+    "console-stamp": "^3.0.6",
     "dotenv": "^16.0.1",
     "mongoose": "^6.5.3",
     "node-fetch": "^2.6.7",
