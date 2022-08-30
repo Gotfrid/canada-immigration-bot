@@ -19,7 +19,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log(`Successfully connected to ${process.env.MODE} MongoDB`)
+  () => console.info(`Successfully connected to ${process.env.MODE} MongoDB`)
 );
 
 // Download ALL express entry data
@@ -52,15 +52,15 @@ const fetchExistingData = async () => {
 
 const main = async () => {
   const allRounds = await fetchAllData();
-  console.log("Downloaded a total of", allRounds.length, "entries.");
+  console.info("Downloaded a total of", allRounds.length, "entries.");
 
   const existingRounds = await fetchExistingData();
-  console.log("Fetched", existingRounds.length, "entries from the DB.");
+  console.info("Fetched", existingRounds.length, "entries from the DB.");
 
   const newRounds = allRounds.filter(
     (e) => !existingRounds.includes(e.drawNumber)
   );
-  console.log("Writing", newRounds.length, "new entries to the DB");
+  console.info("Writing", newRounds.length, "new entries to the DB");
 
   if (newRounds.length === 0) {
     mongoose.disconnect();
@@ -77,7 +77,7 @@ const main = async () => {
       mongoose.disconnect();
       process.exit(1);
     } else {
-      console.log("New data is saved successfully.");
+      console.info("New data is saved successfully.");
       mongoose.disconnect();
       process.exit(0);
     }
