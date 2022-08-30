@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const TelegramBot = require("node-telegram-bot-api");
 const AsciiTable = require("ascii-table");
-const { Round } = require("./src/mongo/schema");
+const { Round, Subscriber } = require("./src/mongo/schema");
 
 // read env variables
 dotenv.config();
@@ -40,10 +40,26 @@ bot.onText(/\/start/, (msg) => {
   });
 });
 
-bot.onText(/^\/subscribe$/, (msg) => {
-  bot.sendMessage(msg.chat.id, "/subscribe placeholder", {
-    parse_mode: "HTML",
-  });
+bot.onText(/^\/subscribe$/, async (msg) => {
+  const userIsSubscriber = await Subscriber.findOne({ chatId: msg.chat.id });
+  if (userIsSubscriber === null) {
+    const newSubscriber = new Subscriber({
+      chatID: msg.chat.id,
+      firstName: msg.from.first_name,
+      lastName: msg.from.last_name,
+      subscribedAt: new Date(msg.date * 1000),
+    });
+    await newSubscriber.save();
+    bot.sendMessage(
+      msg.chat.id,
+      "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe"
+    );
+  } else {
+    bot.sendMessage(
+      msg.chat.id,
+      "You are already subscribed!\nIf you want, you can /unsubscribe"
+    );
+  }
 });
 
 bot.onText(/^\/unsubscribe$/, (msg) => {
