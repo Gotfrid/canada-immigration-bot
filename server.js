@@ -38,6 +38,39 @@ const welcomeMessage = (userName) => {
   );
 };
 
+const lastRoundMessage = (round) => {
+  return (
+    `Date of round: ${round.drawDateFull}\n` +
+    `CRS score: <strong>${round.drawCRS}</strong>\n` +
+    `Invitations: ${round.drawSizeStr}`
+  );
+};
+
+const last50Message = (document) => {
+  return document
+    .sort((a, b) => (a.drawDate > b.drawDate ? 1 : -1))
+    .reduce((prev, next) => {
+      let program;
+      switch (next.drawName) {
+        case "No Program Specified":
+          program = ".";
+          break;
+        case "Provincial Nominee Program":
+          program = " (PNP).";
+          break;
+        case "Canadian Experience Class":
+          program = " (CEC).";
+          break;
+        default:
+          program = ` (${next.drawName}).`;
+      }
+      return (
+        prev +
+        `${next.drawNumber}. ${next.drawDateFull} - ${next.drawCRS}${program}\n`
+      );
+    }, "");
+};
+
 bot.onText(/\/start/, async (msg) => {
   // It makes sense to reset user in the DB when they `start`
   await User.findOneAndRemove({ chatID: msg.chat.id });
@@ -96,8 +129,7 @@ bot.onText(/^\/unsubscribe$/, async (msg) => {
 
 bot.onText(/^\/last$/, async (msg) => {
   const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
-  const crsValue = crsDocument[0].drawCRS;
-  const message = `<strong>Last CRS score:</strong>\n${crsValue}`;
+  const message = lastRoundMessage(crsDocument[0]);
   bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
 
@@ -106,9 +138,6 @@ bot.onText(/^\/last50$/, async (msg) => {
     .sort({ drawDate: -1 })
     .limit(50)
     .exec();
-  const table = new AsciiTable()
-    .setHeading("Date", "CRS")
-    .addRowMatrix(crsDocument.map((doc) => [doc.drawDate, doc.drawCRS]));
-  const message = `<strong>Last 50 CRS scores:</strong>\n<pre>${table.toString()}</pre>`;
+  const message = last50Message(crsDocument);
   bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
