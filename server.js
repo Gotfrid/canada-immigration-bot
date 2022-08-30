@@ -163,9 +163,9 @@ if (process.env.MODE === "production") {
     if (change.operationType !== "insert") return;
     const message = lastRoundMessage(change.fullDocument, true);
     const subscribers = await Subscriber.find().select("chatID");
-    subscribers.forEach((subscriber) => {
+    subscribers.forEach(async (subscriber) => {
       console.info("Sending notification to", subscriber.chatID);
-      bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
+      await bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
     });
   });
 }
