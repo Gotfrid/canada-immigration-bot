@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const TelegramBot = require("node-telegram-bot-api");
 const AsciiTable = require("ascii-table");
-const { Round, Subscriber } = require("./src/mongo/schema");
+const { Round, Subscriber, User } = require("./src/mongo/schema");
 
 // read env variables
 dotenv.config();
@@ -34,7 +34,18 @@ const welcomeMessage = (userName) => {
   );
 };
 
-bot.onText(/\/start/, (msg) => {
+bot.onText(/\/start/, async (msg) => {
+  const newUser = new User({
+    chatID: msg.chat.id,
+    firstName: msg.from.first_name,
+    lastName: msg.from.last_name,
+    startedAt: new Date(msg.date * 1000),
+  });
+  await newUser.save();
+
+  // It makes sense to reset user subcription if they click "start again"
+  await Subscriber.findOneAndRemove({ chatID: msg.chat.id });
+
   bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), {
     parse_mode: "HTML",
   });

@@ -20,8 +20,16 @@ const subscriberSchema = new Schema({
   subscribedAt: Date,
 });
 
+const userSchema = new Schema({
+  chatID: Number,
+  firstName: String,
+  lastName: String,
+  startedAt: Date,
+});
+
 // Model definition
 const Round = model("Round", roundSchema);
-const Subscriber = model("subscriber", subscriberSchema);
+const Subscriber = model("Subscriber", subscriberSchema);
+const User = model("User", userSchema);
 
-module.exports = { Round, Subscriber };
+module.exports = { Round, Subscriber, User };
