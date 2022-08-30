@@ -89,9 +89,13 @@ bot.onText(/\/start/, async (msg) => {
   });
 });
 
-bot.onText(/^\/test$/, (msg) => bot.sendMessage(msg.chat.id, "bot is working"));
+bot.onText(/^\/test$/, (msg) => {
+  console.log("received `test` command");
+  bot.sendMessage(msg.chat.id, "bot is working");
+});
 
 bot.onText(/^\/subscribe$/, async (msg) => {
+  console.log("received `subscribe` command");
   const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
   if (subscriber === null) {
     const newSubscriber = new Subscriber({
@@ -114,6 +118,7 @@ bot.onText(/^\/subscribe$/, async (msg) => {
 });
 
 bot.onText(/^\/unsubscribe$/, async (msg) => {
+  console.log("received `unsubscribe` command");
   const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
   if (subscriber === null) {
     bot.sendMessage(
@@ -130,12 +135,14 @@ bot.onText(/^\/unsubscribe$/, async (msg) => {
 });
 
 bot.onText(/^\/last$/, async (msg) => {
+  console.log("received `last` command");
   const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
   const message = lastRoundMessage(crsDocument[0]);
   bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
 
 bot.onText(/^\/last50$/, async (msg) => {
+  console.log("received `last50` command");
   const crsDocument = await Round.find()
     .sort({ drawDate: -1 })
     .limit(50)
