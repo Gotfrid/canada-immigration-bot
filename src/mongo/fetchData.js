@@ -33,8 +33,11 @@ const fetchAllData = async () => {
     return {
       drawNumber: round.drawNumber,
       drawDate: round.drawDate,
+      drawDateFull: round.drawDateFull,
+      drawDateTime: round.drawDateTime,
       drawName: round.drawName,
-      drawSize: Number(round.drawSize.replace(",", "")),
+      drawSizeStr: round.drawSize,
+      drawSizeNum: Number(round.drawSize.replace(",", "")),
       drawCRS: Number(round.drawCRS),
     };
   });
