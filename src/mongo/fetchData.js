@@ -20,8 +20,7 @@ mongoose.connect(MONGO_URI, {
 // Download ALL express entry data
 const fetchAllData = async () => {
   const rawData = await fetch(
-    // "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json",
-    "https://raw.githubusercontent.com/Gotfrid/CaImmigrationBot/main/data/rounds.json?token=GHSAT0AAAAAABXCSIUXC3Z2VLR4FGOJ2MLMYYNRNQA",
+    "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json",
     { method: "GET" }
   );
   const rawJson = await rawData.json();
