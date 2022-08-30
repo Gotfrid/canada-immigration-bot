@@ -8,16 +8,20 @@ const { Round, Subscriber, User } = require("./src/mongo/schema");
 dotenv.config();
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
-const TEST_MODE = process.env.TEST_MODE || false;
-const MONGO_URI = TEST_MODE
-  ? process.env.TEST_MONGO_URI
-  : process.env.PROD_MONGO_URI;
+const MONGO_URI =
+  process.env.MODE === "test"
+    ? process.env.TEST_MONGO_URI
+    : process.env.PROD_MONGO_URI;
 
 // Connect to MongoDB
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  MONGO_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log(`Successfully connected to ${process.env.MODE} MongoDB`)
+);
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 

@@ -6,16 +6,21 @@ const { Round } = require("./schema.js");
 
 // Load env variables
 dotenv.config();
-const TEST_MODE = process.env.TEST_MODE || false;
-const MONGO_URI = TEST_MODE
-  ? process.env.TEST_MONGO_URI
-  : process.env.PROD_MONGO_URI;
+
+const MONGO_URI =
+  process.env.MODE === "test"
+    ? process.env.TEST_MONGO_URI
+    : process.env.PROD_MONGO_URI;
 
 // Connect to MongoDB
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  MONGO_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => console.log(`Successfully connected to ${process.env.MODE} MongoDB`)
+);
 
 // Download ALL express entry data
 const fetchAllData = async () => {
@@ -38,12 +43,16 @@ const fetchAllData = async () => {
 
 fetchAllData().then((data) => {
   console.log("Fetched the data: ", data.length);
-  Round.insertMany(data, (error) =>
-    error
-      ? console.error(
-          "Tried to write data, but had the following error:\n",
-          error
-        )
-      : console.log(`Successfully wrote ${data.length} documents.`)
-  );
+  Round.insertMany(data, (error) => {
+    if (error) {
+      console.error(
+        "Tried to write data, but had the following error:\n",
+        error
+      );
+      process.exit(1);
+    } else {
+      console.log(`Successfully wrote ${data.length} documents.`);
+      process.exit(0);
+    }
+  });
 });
