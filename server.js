@@ -35,6 +35,10 @@ const welcomeMessage = (userName) => {
 };
 
 bot.onText(/\/start/, async (msg) => {
+  // It makes sense to reset user in the DB when they `start`
+  await User.findOneAndRemove({ chatID: msg.chat.id });
+  await Subscriber.findOneAndRemove({ chatID: msg.chat.id });
+
   const newUser = new User({
     chatID: msg.chat.id,
     firstName: msg.from.first_name,
@@ -42,9 +46,6 @@ bot.onText(/\/start/, async (msg) => {
     startedAt: new Date(msg.date * 1000),
   });
   await newUser.save();
-
-  // It makes sense to reset user subcription if they click "start again"
-  await Subscriber.findOneAndRemove({ chatID: msg.chat.id });
 
   bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), {
     parse_mode: "HTML",
