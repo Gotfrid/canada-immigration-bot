@@ -41,8 +41,8 @@ bot.onText(/\/start/, (msg) => {
 });
 
 bot.onText(/^\/subscribe$/, async (msg) => {
-  const userIsSubscriber = await Subscriber.findOne({ chatId: msg.chat.id });
-  if (userIsSubscriber === null) {
+  const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
+  if (subscriber === null) {
     const newSubscriber = new Subscriber({
       chatID: msg.chat.id,
       firstName: msg.from.first_name,
@@ -52,20 +52,30 @@ bot.onText(/^\/subscribe$/, async (msg) => {
     await newSubscriber.save();
     bot.sendMessage(
       msg.chat.id,
-      "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe"
+      "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe."
     );
   } else {
     bot.sendMessage(
       msg.chat.id,
-      "You are already subscribed!\nIf you want, you can /unsubscribe"
+      "You are already subscribed!\nIf you want, you can /unsubscribe."
     );
   }
 });
 
-bot.onText(/^\/unsubscribe$/, (msg) => {
-  bot.sendMessage(msg.chat.id, "/unsubscribe placeholder", {
-    parse_mode: "HTML",
-  });
+bot.onText(/^\/unsubscribe$/, async (msg) => {
+  const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
+  if (subscriber === null) {
+    bot.sendMessage(
+      msg.chat.id,
+      "You are not subscribed!\nIf you want to receive notifications, you can /subscribe."
+    );
+  } else {
+    await Subscriber.findOneAndRemove({ chatID: msg.chat.id });
+    bot.sendMessage(
+      msg.chat.id,
+      "You have unsubscribed.\nIf you want to receive notifications again, you can /subscribe."
+    );
+  }
 });
 
 bot.onText(/^\/last$/, async (msg) => {
