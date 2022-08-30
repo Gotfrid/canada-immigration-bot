@@ -44,9 +44,29 @@ const fetchAllData = async () => {
   return data;
 };
 
-fetchAllData().then((data) => {
-  console.log("Fetched the data: ", data.length);
-  Round.insertMany(data, (error, docs) => {
+const fetchExistingData = async () => {
+  return (await Round.find().select({ drawNumber: 1, _id: 0 })).map(
+    (e) => e.drawNumber
+  );
+};
+
+const main = async () => {
+  const allRounds = await fetchAllData();
+  console.log("Downloaded a total of", allRounds.length, "entries.");
+
+  const existingRounds = await fetchExistingData();
+  console.log("Fetched", existingRounds.length, "entries from the DB.");
+
+  const newRounds = allRounds.filter(
+    (e) => !existingRounds.includes(e.drawNumber)
+  );
+  console.log("Writing", newRounds.length, "new entries to the DB");
+
+  if (newRounds.length === 0) {
+    process.exit(0);
+  }
+
+  Round.insertMany(newRounds, (error) => {
     if (error) {
       error.insertedDocs = "REDACTED";
       console.error(
@@ -55,8 +75,10 @@ fetchAllData().then((data) => {
       );
       process.exit(1);
     } else {
-      console.log(`Successfully wrote ${data.length} documents.`);
+      console.log("New data is saved successfully.");
       process.exit(0);
     }
   });
-});
+};
+
+main();
