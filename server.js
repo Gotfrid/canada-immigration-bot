@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const logger = require("console-stamp");
 const TelegramBot = require("node-telegram-bot-api");
 const { Round, Subscriber, User } = require("./src/mongo/schema");
+
+logger(console, {
+  format: ":date(yyyy-mm-dd HH:MM:ss) :label",
+});
 
 // read env variables
 dotenv.config();
@@ -19,7 +24,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log(`Successfully connected to ${process.env.MODE} MongoDB`)
+  () => console.info(`Successfully connected to ${process.env.MODE} MongoDB`)
 );
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
@@ -90,12 +95,12 @@ bot.onText(/\/start/, async (msg) => {
 });
 
 bot.onText(/^\/test$/, (msg) => {
-  console.log("Received `test` command from", msg.chat.id);
+  console.info("Received `test` command from", msg.chat.id);
   bot.sendMessage(msg.chat.id, "bot is working");
 });
 
 bot.onText(/^\/subscribe$/, async (msg) => {
-  console.log("Received `subscribe` command from", msg.chat.id);
+  console.info("Received `subscribe` command from", msg.chat.id);
   const subscriber = await Subscriber.findOne({ chatID: msg.chat.id });
   if (subscriber === null) {
     const newSubscriber = new Subscriber({
@@ -118,7 +123,7 @@ bot.onText(/^\/subscribe$/, async (msg) => {
 });
 
 bot.onText(/^\/unsubscribe$/, async (msg) => {
-  console.log("Received `unsubscribe` command from", msg.chat.id);
+  console.info("Received `unsubscribe` command from", msg.chat.id);
   const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
   if (subscriber === null) {
     bot.sendMessage(
@@ -135,14 +140,14 @@ bot.onText(/^\/unsubscribe$/, async (msg) => {
 });
 
 bot.onText(/^\/last$/, async (msg) => {
-  console.log("Received `last` command from", msg.chat.id);
+  console.info("Received `last` command from", msg.chat.id);
   const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
   const message = lastRoundMessage(crsDocument[0]);
   bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
 
 bot.onText(/^\/last50$/, async (msg) => {
-  console.log("Received `last50` command from", msg.chat.id);
+  console.info("Received `last50` command from", msg.chat.id);
   const crsDocument = await Round.find()
     .sort({ drawDate: -1 })
     .limit(50)
@@ -159,6 +164,7 @@ if (process.env.MODE === "production") {
     const message = lastRoundMessage(change.fullDocument, true);
     const subscribers = await Subscriber.find().select("chatID");
     subscribers.forEach((subscriber) => {
+      console.info("Sending notification to", subscriber.chatID);
       bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
     });
   });
