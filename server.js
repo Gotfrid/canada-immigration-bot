@@ -140,3 +140,16 @@ bot.onText(/^\/last50$/, async (msg) => {
   const message = last50Message(crsDocument);
   bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
+
+// Watch for data changes - only in prod environment
+if (process.env.MODE === "production") {
+  const roundEventEmitter = Round.watch();
+  roundEventEmitter.on("change", async (change) => {
+    if (change.operationType !== "insert") return;
+    const message = lastRoundMessage(change.fullDocument);
+    const subscribers = await Subscriber.find().select("chatID");
+    subscribers.forEach((subscriber) => {
+      bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
+    });
+  });
+}
