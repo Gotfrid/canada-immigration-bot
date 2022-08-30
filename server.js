@@ -1,13 +1,25 @@
-// import packages
-import dotenv from "dotenv";
-import TelegramBot from "node-telegram-bot-api";
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const TelegramBot = require("node-telegram-bot-api");
+const AsciiTable = require("ascii-table");
+const { Round } = require("./src/mongo/schema");
 
 // read env variables
 dotenv.config();
 
-const token = process.env.BOT_TOKEN;
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const TEST_MODE = process.env.TEST_MODE || false;
+const MONGO_URI = TEST_MODE
+  ? process.env.TEST_MONGO_URI
+  : process.env.PROD_MONGO_URI;
 
-const bot = new TelegramBot(token, { polling: true });
+// Connect to MongoDB
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
 const welcomeMessage = (userName) => {
   return (
@@ -40,10 +52,21 @@ bot.onText(/^\/unsubscribe$/, (msg) => {
   });
 });
 
-bot.onText(/^\/last$/, (msg) => {
-  bot.sendMessage(msg.chat.id, "/last placeholder");
+bot.onText(/^\/last$/, async (msg) => {
+  const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
+  const crsValue = crsDocument[0].drawCRS;
+  const message = `<strong>Last CRS score:</strong>\n${crsValue}`;
+  bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
 
-bot.onText(/^\/last50$/, (msg) => {
-  bot.sendMessage(msg.chat.id, "/last50 placeholder");
+bot.onText(/^\/last50$/, async (msg) => {
+  const crsDocument = await Round.find()
+    .sort({ drawDate: -1 })
+    .limit(50)
+    .exec();
+  const table = new AsciiTable()
+    .setHeading("Date", "CRS")
+    .addRowMatrix(crsDocument.map((doc) => [doc.drawDate, doc.drawCRS]));
+  const message = `<strong>Last 50 CRS scores:</strong>\n<pre>${table.toString()}</pre>`;
+  bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 });
