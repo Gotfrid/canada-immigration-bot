@@ -8,8 +8,11 @@ const roundSchema = new Schema({
     unique: true,
   },
   drawDate: String, // Probably should be Date, but string is OK
+  drawDateFull: String,
+  drawDateTime: String,
   drawName: String,
-  drawSize: Number,
+  drawSizeStr: String,
+  drawSizeNum: Number,
   drawCRS: Number,
 });
 
