@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const TelegramBot = require("node-telegram-bot-api");
-const AsciiTable = require("ascii-table");
 const { Round, Subscriber, User } = require("./src/mongo/schema");
 
 // read env variables
