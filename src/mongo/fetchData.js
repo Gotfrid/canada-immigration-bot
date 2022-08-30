@@ -46,8 +46,9 @@ const fetchAllData = async () => {
 
 fetchAllData().then((data) => {
   console.log("Fetched the data: ", data.length);
-  Round.insertMany(data, (error) => {
+  Round.insertMany(data, (error, docs) => {
     if (error) {
+      error.insertedDocs = "REDACTED";
       console.error(
         "Tried to write data, but had the following error:\n",
         error
