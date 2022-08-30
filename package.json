@@ -1,8 +1,10 @@
 {
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "export MODE=production && node server.js",
+    "dev": "export MODE=test && nodemon server.js",
+    "fetch-data-prod": "export MODE=production && node src/mongo/fetchData.js",
+    "fetch-data-test": "export MODE=test && node src/mongo/fetchData.js"
   },
   "dependencies": {
     "ascii-table": "^0.0.9",
