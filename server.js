@@ -89,6 +89,8 @@ bot.onText(/\/start/, async (msg) => {
   });
 });
 
+bot.onText(/^\/test$/, (msg) => bot.sendMessage(msg.chat.id, "bot is working"));
+
 bot.onText(/^\/subscribe$/, async (msg) => {
   const subscriber = await Subscriber.findOne({ chatId: msg.chat.id });
   if (subscriber === null) {
