@@ -14,14 +14,20 @@ const roundSchema = new Schema({
 });
 
 const subscriberSchema = new Schema({
-  chatID: Number,
+  chatID: {
+    type: Number,
+    unique: true,
+  },
   firstName: String,
   lastName: String,
   subscribedAt: Date,
 });
 
 const userSchema = new Schema({
-  chatID: Number,
+  chatID: {
+    type: Number,
+    unique: true,
+  },
   firstName: String,
   lastName: String,
   startedAt: Date,
