@@ -165,7 +165,14 @@ if (process.env.MODE === "production") {
     const subscribers = await Subscriber.find().select("chatID");
     subscribers.forEach(async (subscriber) => {
       console.info("Sending notification to", subscriber.chatID);
-      await bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
+      // Possible failures: user has stopped the bot
+      // but the DB still conains their chatID
+      try {
+        await bot.sendMessage(subscriber.chatID, message, { parse_mode: "HTML" });
+        console.info("Message has been sent.")
+      } catch (error) {
+        console.error("Message could not be sent.")
+      }
     });
   });
 }
