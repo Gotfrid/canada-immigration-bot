@@ -13,8 +13,6 @@ const bot = new TelegramBot(process.env.BOT_TOKEN);
 
 exports.handler = async (event) => {
   const response = await fetchDataAndUpdate();
-  // TODO: when new data is inserted, lambda function fails to send admin message
-  await bot.sendMessage(process.env.CHAT_ID, response);
   console.log(response);
   return response;
 };
