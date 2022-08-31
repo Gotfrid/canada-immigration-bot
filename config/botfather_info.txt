@@ -1,0 +1,17 @@
+# Name
+Canada Immigration Bot
+
+# Description
+This is a bot that can help you find necessary info about the immigration to Canada. Issues and improvements: https://github.com/Gotfrid/canada-immigration-bot/issues. Creator: @Gotfr1d.
+
+# About
+This is a bot that can help you find necessary info about the immigration to Canada. Issues and improvements: https://github.com/Gotfrid/canada-immigration-bot/issues. Creator: @Gotfr1d.
+
+# Userpic
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRZO8bVp-qYiOMoM3FYxkl5H051UXKY70_jg&usqp=CAU
+
+# Commands
+subscribe - Get notified about new rounds
+unsubscribe - Unsubscribe
+last - Last CRS score
+last50 - Last 50 CRS scores

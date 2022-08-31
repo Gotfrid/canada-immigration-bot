@@ -1,4 +1,0 @@
-subscribe - Get notified about new rounds
-unsubscribe - Unsubscribe
-last - Last CRS score
-last50 - Last 50 CRS scores
