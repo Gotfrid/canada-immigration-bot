@@ -9,11 +9,10 @@ Issues and improvements: https://github.com/Gotfrid/canada-immigration-bot/issue
 Creator: @Gotfr1d.
 
 # About
-This is a bot that can help you find necessary info about the immigration to Canada.
+Canadian Express Entry draft information.
+Contact me: @Gotfr1d
 
-Issues and improvements: https://github.com/Gotfrid/canada-immigration-bot/issues.
-
-Creator: @Gotfr1d.
+https://github.com/Gotfrid/canada-immigration-bot
 
 # Userpic
 https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRZO8bVp-qYiOMoM3FYxkl5H051UXKY70_jg&usqp=CAU
