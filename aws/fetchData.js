@@ -5,27 +5,21 @@
  */
 
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const fetch = require("node-fetch");
-
 const { Round } = require("../mongo/schema.js");
 
-// Load env variables
-dotenv.config();
+// Load env variables when testing locally. On AWS env vars are defined separately.
+if (process.env.MODE === "test") {
+  require("dotenv").config({ path: `${__dirname}/./../config/.env` });
+}
 
-const MONGO_URI =
-  process.env.MODE === "test"
-    ? process.env.TEST_MONGO_URI
-    : process.env.PROD_MONGO_URI;
+const mongo_options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
 
-// Connect to MongoDB
-mongoose.connect(
-  MONGO_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => console.info(`Successfully connected to ${process.env.MODE} MongoDB`)
+mongoose.connect(process.env.PROD_MONGO_URI, mongo_options, () =>
+  console.info(`Successfully connected to MongoDB`)
 );
 
 // Download ALL express entry data
@@ -87,4 +81,4 @@ const main = async () => {
   });
 };
 
-main();
+exports.fetchData = main;
