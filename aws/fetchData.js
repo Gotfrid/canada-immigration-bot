@@ -1,8 +1,14 @@
+/**
+ * This function is supposed to be run on AWS Lambda
+ * with a fixed interval (5 mins).
+ * AWS configuration is done manually in the web interface.
+ */
+
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const fetch = require("node-fetch");
 
-const { Round } = require("./schema.js");
+const { Round } = require("../mongo/schema.js");
 
 // Load env variables
 dotenv.config();
