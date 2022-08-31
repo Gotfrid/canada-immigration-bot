@@ -31,7 +31,7 @@ switch (process.env.MODE) {
     MONGO_URI = process.env.STAGE_MONGO_URI;
     break;
   default:
-    process.env.PROD_MONGO_URI;
+    MONGO_URI = process.env.PROD_MONGO_URI;
 }
 
 // Connect to MongoDB
