@@ -6,9 +6,7 @@
   },
   "scripts": {
     "start": "export MODE=production && node server.js",
-    "dev": "export MODE=test && nodemon server.js",
-    "fetch-data-prod": "export MODE=production && node src/mongo/fetchData.js",
-    "fetch-data-test": "export MODE=test && node src/mongo/fetchData.js"
+    "dev": "export MODE=test && nodemon server.js"
   },
   "dependencies": {
     "console-stamp": "^3.0.6",
