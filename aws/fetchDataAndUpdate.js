@@ -22,7 +22,7 @@ const mongo_options = {
 };
 
 mongoose.connect(MONGO_URI, mongo_options, () =>
-  console.info("Successfully connected to MongoDB", MONGO_URI)
+  console.info("Successfully connected to MongoDB")
 );
 
 /**
