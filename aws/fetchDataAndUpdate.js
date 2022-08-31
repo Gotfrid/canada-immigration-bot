@@ -35,18 +35,14 @@ const fetchDataAndUpdate = async () => {
   let logMessage = "";
 
   const allRounds = await fetchAllData();
-  console.log("all rounds");
   logMessage += `\nDownloaded a total of ${allRounds.length} entries.`;
 
   const existingRounds = await fetchExistingData();
-  console.log("existing rounds");
   logMessage += `\nFetched ${existingRounds.length} entries from the DB.`;
 
   const newRounds = allRounds.filter(
     (e) => !existingRounds.includes(e.drawNumber)
   );
-  console.log("new rounds");
-  console.log(newRounds[0]);
   logMessage += `\nWriting ${newRounds.length} new entries to the DB.`;
 
   if (newRounds.length === 0) {
@@ -59,7 +55,6 @@ const fetchDataAndUpdate = async () => {
       ? `\nTried to write data, but had the following error:\n${error}`
       : "\nNew data is saved successfully.";
 
-  // TODO: Notify via telegram bot
   // TODO: async works not correctly: message is returned before data is acrtually written
   return { status: 200, body: logMessage };
 };
