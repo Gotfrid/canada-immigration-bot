@@ -82,9 +82,29 @@ const last50Handler = async (bot, msg) => {
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
+const changeHandler = async (bot, change) => {
+  if (change.operationType !== "insert") return;
+  const message = lastRoundMessage(change.fullDocument, true);
+  const subscribers = await Subscriber.find().select("chatID");
+  subscribers.forEach(async (subscriber) => {
+    console.info("Sending notification to", subscriber.chatID);
+    // Possible failures: user has stopped the bot
+    // but the DB still conains their chatID
+    try {
+      await bot.sendMessage(subscriber.chatID, message, {
+        parse_mode: "HTML",
+      });
+      console.info("Message has been sent.");
+    } catch (error) {
+      console.error("Message could not be sent.");
+    }
+  });
+};
+
 exports.startHandler = startHandler;
 exports.testHandler = testHandler;
 exports.subscribeHandler = subscribeHandler;
 exports.unsubscribeHandler = unsubscribeHandler;
 exports.lastHandler = lastHandler;
 exports.last50Handler = last50Handler;
+exports.changeHandler = changeHandler;
