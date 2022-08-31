@@ -24,10 +24,7 @@ mongoose.connect(
 
 // Download ALL express entry data
 const fetchAllData = async () => {
-  const rawData = await fetch(
-    "https://www.canada.ca/content/dam/ircc/documents/json/ee_rounds_123_en.json",
-    { method: "GET" }
-  );
+  const rawData = await fetch(process.env.DATA_URL, { method: "GET" });
   const rawJson = await rawData.json();
   const data = await rawJson.rounds.map((round) => {
     return {
