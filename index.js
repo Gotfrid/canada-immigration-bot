@@ -1,3 +1,7 @@
+/**
+ * This function is supposed to run on AWS Lambda.
+ */
+
 const TelegramBot = require("node-telegram-bot-api");
 const { fetchDataAndUpdate } = require("./aws/fetchDataAndUpdate");
 
@@ -10,5 +14,6 @@ const bot = new TelegramBot(process.env.BOT_TOKEN);
 exports.handler = async (event) => {
   const response = await fetchDataAndUpdate();
   await bot.sendMessage(process.env.CHAT_ID, response);
-  return event;
+  console.log(response);
+  return response;
 };
