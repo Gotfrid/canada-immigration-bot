@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const logger = require("console-stamp");
 const TelegramBot = require("node-telegram-bot-api");
-const { Round, Subscriber, User } = require("./src/mongo/schema");
+const { Round, Subscriber, User } = require("./mongo/schema");
 
 logger(console, {
   format: ":date(yyyy-mm-dd HH:MM:ss) :label",
 });
 
 // read env variables
-dotenv.config();
+dotenv.config({ path: `${__dirname}/config/.env` });
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const MONGO_URI =
