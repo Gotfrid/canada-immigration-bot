@@ -1,3 +1,4 @@
+const AsciiTable = require("ascii-table");
 const keyMapping = require("../config/distributionKeyMapping");
 
 const welcomeMessage = (userName) => {
@@ -52,15 +53,13 @@ const distributionMessage = (document) => {
   const keys = Object.keys(doc).filter(
     (key) => key.startsWith("dd") && key !== "dd18"
   );
+  const data = keys.map((key) => [keyMapping[key], doc[key]]);
+  const table = new AsciiTable();
+  table.setHeading("Range", "Candidates").addRowMatrix(data);
   return `
-<strong>CRS score distribution</strong>
-<i> as of ${document.drawDistributionAsOn}</i>
-${keys.reduce(
-  (prev, next) => prev + "\n" + keyMapping[next] + ": " + doc[next],
-  ""
-)}\n
-<strong>Total</strong>: ${doc.dd18}
-  `;
+  <strong>CRS score distribution</strong>\n<i>as of ${
+    document.drawDistributionAsOn
+  }</i>\n<pre>${table.toString()}</pre>\n<strong>Total</strong>: ${doc.dd18}`;
 };
 
 exports.welcomeMessage = welcomeMessage;
