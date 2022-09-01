@@ -48,17 +48,17 @@ mongoose.connect(
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-bot.onText(/\/start/, async (msg) => await startHandler(bot, msg));
+bot.onText(/\/start/, (msg) => startHandler(bot, msg));
 
 bot.onText(/^\/test$/, (msg) => testHandler(bot, msg));
 
-bot.onText(/^\/subscribe$/, async (msg) => subscribeHandler(bot, msg));
+bot.onText(/^\/subscribe$/, (msg) => subscribeHandler(bot, msg));
 
-bot.onText(/^\/unsubscribe$/, async (msg) => unsubscribeHandler(bot, msg));
+bot.onText(/^\/unsubscribe$/, (msg) => unsubscribeHandler(bot, msg));
 
-bot.onText(/^\/last$/, async (msg) => lastHandler(bot, msg));
+bot.onText(/^\/last$/, (msg) => lastHandler(bot, msg));
 
-bot.onText(/^\/last50$/, async (msg) => last50Handler(bot, msg));
+bot.onText(/^\/last50$/, (msg) => last50Handler(bot, msg));
 
 bot.onText(/^\/debug$/, (msg) =>
   debugHandler(bot, msg, ADMIN_CHAT_IDS, MONGO_URI)
