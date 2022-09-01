@@ -1,3 +1,5 @@
+const keyMapping = require("../config/distributionKeyMapping");
+
 const welcomeMessage = (userName) => {
   return (
     `🇨🇦 <strong>Welcome, ${userName}!</strong>` +
@@ -45,6 +47,23 @@ const last50Message = (document) => {
     }, "");
 };
 
+const distributionMessage = (document) => {
+  const doc = JSON.parse(JSON.stringify(document));
+  const keys = Object.keys(doc).filter(
+    (key) => key.startsWith("dd") && key !== "dd18"
+  );
+  return `
+<strong>CRS score distribution</strong>
+<i> as of ${document.drawDistributionAsOn}</i>
+${keys.reduce(
+  (prev, next) => prev + "\n" + keyMapping[next] + ": " + doc[next],
+  ""
+)}\n
+<strong>Total</strong>: ${doc.dd18}
+  `;
+};
+
 exports.welcomeMessage = welcomeMessage;
 exports.lastRoundMessage = lastRoundMessage;
 exports.last50Message = last50Message;
+exports.distributionMessage = distributionMessage;
