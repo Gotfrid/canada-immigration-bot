@@ -7,7 +7,8 @@
   "scripts": {
     "start": "export MODE=production && node server.js",
     "dev": "export MODE=stage && nodemon server.js",
-    "test-lambda": "export MODE=stage && node index.js"
+    "test-lambda": "export MODE=stage && node index.js",
+    "send-message": "node sendCustomMessage.js"
   },
   "dependencies": {
     "ascii-table": "^0.0.9",
