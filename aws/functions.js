@@ -23,6 +23,7 @@ const fetchAllData = async () => {
   const distributionData = await rawJson.rounds.map((round) => {
     return {
       drawNumber: round.drawNumber,
+      drawDate: round.drawDate,
       drawDistributionAsOn: round.drawDistributionAsOn,
       dd1: round.dd1,
       dd2: round.dd2,
