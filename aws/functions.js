@@ -60,9 +60,12 @@ const fetchExistingData = async (model) => {
 
 /**
  * Helper function to insert new data into the MongoDB
- * @param { Object[] } data
+ * @param {Model} model
+ * @param {Array<Object>} data
+ * @returns {Number}
  */
 const insertData = (model, data) => {
+  if (data.length === 0) return "Skip";
   model.insertMany(data, (error) => {
     if (error) {
       error.insertedDocs = "REDACTED";
@@ -70,10 +73,33 @@ const insertData = (model, data) => {
         "Tried to write data, but had the following error:\n",
         error
       );
-      return 1;
+      return "Fail";
     }
-    return 0;
+    return "Success";
   });
 };
 
-module.exports = { fetchAllData, fetchExistingData, insertData };
+const generateLogMessage = async (
+  allRounds,
+  existingRounds,
+  existingDistributions,
+  insertRoundResult,
+  insertDistrResult
+) => {
+  const message = `
+    Downloaded a total of ${allRounds.length} entries.
+    Fetched ${existingRounds.length} round entries from the DB.
+    Fetched ${existingDistributions.length} distr entries from the DB.
+    Saving rounds data: ${await insertRoundResult}.
+    Saving distribution data: ${await insertDistrResult}.
+  `;
+
+  return message;
+};
+
+module.exports = {
+  fetchAllData,
+  fetchExistingData,
+  insertData,
+  generateLogMessage,
+};

@@ -5,7 +5,12 @@
  */
 
 const mongoose = require("mongoose");
-const { fetchAllData, fetchExistingData, insertData } = require("./functions");
+const {
+  fetchAllData,
+  fetchExistingData,
+  insertData,
+  generateLogMessage,
+} = require("./functions");
 const { Round, Distribution } = require(`${__dirname}/./../mongo/schema`);
 
 // Load env variables when testing locally. On AWS env vars are defined separately.
@@ -32,43 +37,25 @@ mongoose.connect(MONGO_URI, mongo_options, () =>
  * @returns { Object } - response object that will display in AWS log
  */
 const fetchDataAndUpdate = async () => {
-  // This message will be sent to the admin of bot via telegram
-  let logMessage = "";
-
   const [allRounds, allDistributions] = await fetchAllData();
-  logMessage += `\nDownloaded a total of ${allRounds.length} entries.`;
-
   const existingRounds = await fetchExistingData(Round);
-  logMessage += `\nFetched ${existingRounds.length} round entries from the DB.`;
-
   const existingDistributions = await fetchExistingData(Distribution);
-  logMessage += `\nFetched ${existingDistributions.length} distr entries from the DB.`;
-
   const newRounds = allRounds.filter(
     (e) => !existingRounds.includes(e.drawNumber)
   );
-
   const newDistributions = allDistributions.filter(
     (e) => !existingDistributions.includes(e.drawNumber)
   );
+  const insertRoundResult = insertData(Round, newRounds);
+  const insertDistrResult = insertData(Distribution, newDistributions);
 
-  if (newRounds.length > 0) {
-    logMessage += `\nWriting ${newRounds.length} new round entries to the DB.`;
-    const insertRoundResult = insertData(Round, newRounds);
-    logMessage +=
-      insertRoundResult > 0
-        ? `\nTried to write rounds data, but had the following error:\n${error}`
-        : "\nNew rounds data is saved successfully.";
-  }
-
-  if (newDistributions.length > 0) {
-    logMessage += `\nWriting ${newDistributions.length} new distribution entries to the DB.`;
-    const insertDistrResult = insertData(Distribution, newDistributions);
-    logMessage +=
-      insertDistrResult > 0
-        ? `\nTried to write rounds data, but had the following error:\n${error}`
-        : "\nNew rounds data is saved successfully.";
-  }
+  const logMessage = await generateLogMessage(
+    allRounds,
+    existingRounds,
+    existingDistributions,
+    insertRoundResult,
+    insertDistrResult
+  );
 
   return { status: 200, body: logMessage };
 };
