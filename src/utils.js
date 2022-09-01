@@ -1,3 +1,6 @@
+const AsciiTable = require("ascii-table");
+const keyMapping = require("../config/distributionKeyMapping");
+
 const welcomeMessage = (userName) => {
   return (
     `🇨🇦 <strong>Welcome, ${userName}!</strong>` +
@@ -45,6 +48,25 @@ const last50Message = (document) => {
     }, "");
 };
 
+const distributionMessage = (document) => {
+  const doc = JSON.parse(JSON.stringify(document));
+  const keys = Object.keys(doc).filter(
+    (key) => key.startsWith("dd") && key !== "dd18"
+  );
+  const data = keys.map((key) => [keyMapping[key], doc[key]]);
+  const table = new AsciiTable()
+    .setHeading("Range", "Candidates")
+    .addRowMatrix(data);
+
+  const title = "<strong>CRS score distribution</strong>";
+  const subtitle = `<i>as of ${document.drawDistributionAsOn}</i>`;
+  const footer = `<strong>Total</strong>: ${doc.dd18}`;
+  const tableString = `<pre>${table.toString()}</pre>`;
+
+  return [title, subtitle, tableString, footer].join("\n");
+};
+
 exports.welcomeMessage = welcomeMessage;
 exports.lastRoundMessage = lastRoundMessage;
 exports.last50Message = last50Message;
+exports.distributionMessage = distributionMessage;
