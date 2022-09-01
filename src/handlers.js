@@ -82,16 +82,20 @@ const last50Handler = async (bot, msg) => {
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-const changeHandler = async (bot, change) => {
+const changeHandler = async (bot, change, groupIds) => {
   if (change.operationType !== "insert") return;
+
   const message = lastRoundMessage(change.fullDocument, true);
   const subscribers = await Subscriber.find().select("chatID");
-  subscribers.forEach(async (subscriber) => {
-    console.info("Sending notification to", subscriber.chatID);
+  const subscriberIds = subscribers.map((sub) => sub.chatID);
+
+  // First, send message to the group(s) - they are the priority
+  [...groupIds, ...subscriberIds].forEach(async (chatID) => {
+    console.info("Sending notification to", chatID);
     // Possible failures: user has stopped the bot
     // but the DB still conains their chatID
     try {
-      await bot.sendMessage(subscriber.chatID, message, {
+      await bot.sendMessage(chatID, message, {
         parse_mode: "HTML",
       });
       console.info("Message has been sent.");
