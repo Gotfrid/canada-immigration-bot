@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-const { Round } = require(`${__dirname}/./../mongo/schema`);
 
 /**
  * Helper function to download all rounds data
@@ -53,8 +52,8 @@ const fetchAllData = async () => {
  * that are already present in the DB.
  * @returns { String[] }
  */
-const fetchExistingData = async () => {
-  return (await Round.find().select({ drawNumber: 1 })).map(
+const fetchExistingData = async (model) => {
+  return (await model.find().select({ drawNumber: 1 })).map(
     (e) => e.drawNumber
   );
 };
@@ -63,8 +62,8 @@ const fetchExistingData = async () => {
  * Helper function to insert new data into the MongoDB
  * @param { Object[] } data
  */
-const insertData = (data) => {
-  Round.insertMany(data, (error) => {
+const insertData = (model, data) => {
+  model.insertMany(data, (error) => {
     if (error) {
       error.insertedDocs = "REDACTED";
       console.error(
