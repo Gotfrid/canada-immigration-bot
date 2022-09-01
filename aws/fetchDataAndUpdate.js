@@ -6,6 +6,7 @@
 
 const mongoose = require("mongoose");
 const { fetchAllData, fetchExistingData, insertData } = require("./functions");
+const { Round, Distribution } = require(`${__dirname}/./../mongo/schema`);
 
 // Load env variables when testing locally. On AWS env vars are defined separately.
 let MONGO_URI = "";
@@ -34,26 +35,40 @@ const fetchDataAndUpdate = async () => {
   // This message will be sent to the admin of bot via telegram
   let logMessage = "";
 
-  const allRounds = await fetchAllData();
+  const [allRounds, allDistributions] = await fetchAllData();
   logMessage += `\nDownloaded a total of ${allRounds.length} entries.`;
 
-  const existingRounds = await fetchExistingData();
-  logMessage += `\nFetched ${existingRounds.length} entries from the DB.`;
+  const existingRounds = await fetchExistingData(Round);
+  logMessage += `\nFetched ${existingRounds.length} round entries from the DB.`;
+
+  const existingDistributions = await fetchExistingData(Distribution);
+  logMessage += `\nFetched ${existingDistributions.length} distr entries from the DB.`;
 
   const newRounds = allRounds.filter(
     (e) => !existingRounds.includes(e.drawNumber)
   );
-  logMessage += `\nWriting ${newRounds.length} new entries to the DB.`;
+  logMessage += `\nWriting ${newRounds.length} new round entries to the DB.`;
 
-  if (newRounds.length === 0) {
-    return logMessage;
+  const newDistributions = allDistributions.filter(
+    (e) => !existingDistributions.includes(e.drawNumber)
+  );
+  logMessage += `\nWriting ${newDistributions.length} new distribution entries to the DB.`;
+
+  if (newRounds.length > 0) {
+    const insertRoundResult = insertData(Round, newRounds);
+    logMessage +=
+      insertRoundResult > 0
+        ? `\nTried to write rounds data, but had the following error:\n${error}`
+        : "\nNew rounds data is saved successfully.";
   }
 
-  const insertResult = insertData(newRounds);
-  logMessage +=
-    insertResult > 0
-      ? `\nTried to write data, but had the following error:\n${error}`
-      : "\nNew data is saved successfully.";
+  if (newDistributions.length > 0) {
+    const insertDistrResult = insertData(Distribution, newDistributions);
+    logMessage +=
+      insertDistrResult > 0
+        ? `\nTried to write rounds data, but had the following error:\n${error}`
+        : "\nNew rounds data is saved successfully.";
+  }
 
   // TODO: async works not correctly: message is returned before data is acrtually written
   return { status: 200, body: logMessage };
