@@ -12,6 +12,7 @@ const {
   last50Handler,
   changeHandler,
 } = require("./src/handlers");
+const { debugHandler } = require("./src/adminHandlers");
 
 logger(console, {
   format: ":date(yyyy-mm-dd HH:MM:ss) :label",
@@ -21,6 +22,7 @@ logger(console, {
 dotenv.config({ path: `${__dirname}/config/.env` });
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
+const ADMIN_CHAT_IDS = JSON.parse(process.env.ADMIN_CHAT_IDS);
 
 let MONGO_URI = "";
 switch (process.env.MODE) {
@@ -57,6 +59,10 @@ bot.onText(/^\/unsubscribe$/, async (msg) => unsubscribeHandler(bot, msg));
 bot.onText(/^\/last$/, async (msg) => lastHandler(bot, msg));
 
 bot.onText(/^\/last50$/, async (msg) => last50Handler(bot, msg));
+
+bot.onText(/^\/debug$/, (msg) =>
+  debugHandler(bot, msg, ADMIN_CHAT_IDS, MONGO_URI)
+);
 
 // Watch for data changes - but only in prod or stage
 if (process.env.MODE !== "test") {
