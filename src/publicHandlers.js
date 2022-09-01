@@ -1,5 +1,10 @@
-const { welcomeMessage, lastRoundMessage, last50Message } = require("./utils");
-const { Round, Subscriber, User } = require("../mongo/schema");
+const {
+  welcomeMessage,
+  lastRoundMessage,
+  last50Message,
+  distributionMessage,
+} = require("./utils");
+const { Round, Subscriber, User, Distribution } = require("../mongo/schema");
 
 const startHandler = async (bot, msg) => {
   // It makes sense to reset user in the DB when they `start`
@@ -105,6 +110,16 @@ const changeHandler = async (bot, change, groupIds) => {
   });
 };
 
+const distributionHandler = async (bot, msg) => {
+  console.info("Received `distribution` command from", msg.chat.id);
+  const crsDocument = await Distribution.find()
+    .sort({ drawDate: -1 })
+    .limit(1)
+    .exec();
+  const message = distributionMessage(crsDocument[0]);
+  await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
+};
+
 exports.startHandler = startHandler;
 exports.testHandler = testHandler;
 exports.subscribeHandler = subscribeHandler;
@@ -112,3 +127,4 @@ exports.unsubscribeHandler = unsubscribeHandler;
 exports.lastHandler = lastHandler;
 exports.last50Handler = last50Handler;
 exports.changeHandler = changeHandler;
+exports.distributionHandler = distributionHandler;
