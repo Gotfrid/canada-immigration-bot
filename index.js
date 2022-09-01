@@ -5,11 +5,11 @@
 const { fetchDataAndUpdate } = require("./aws/fetchDataAndUpdate");
 
 if (process.env.MODE === "stage") {
-  require("dotenv").config({ path: `${__dirname}/config/.env` });
   (async () => {
-    const response = await fetchDataAndUpdate();
-    console.log(response);
-    process.exit(0);
+    fetchDataAndUpdate().then((response) => {
+      console.log(response);
+      process.exit(0);
+    });
   })();
 }
 
