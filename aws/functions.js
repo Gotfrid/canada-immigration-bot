@@ -66,17 +66,11 @@ const fetchExistingData = async (model) => {
  */
 const insertData = (model, data) => {
   if (data.length === 0) return "Skip";
-  model.insertMany(data, (error) => {
-    if (error) {
-      error.insertedDocs = "REDACTED";
-      console.error(
-        "Tried to write data, but had the following error:\n",
-        error
-      );
-      return "Fail";
-    }
-    return "Success";
-  });
+  const result = model
+    .insertMany(data)
+    .then(() => "Success")
+    .catch(() => "Fail");
+  return result;
 };
 
 const generateLogMessage = async (
@@ -86,15 +80,15 @@ const generateLogMessage = async (
   insertRoundResult,
   insertDistrResult
 ) => {
-  const message = `
+  const message = await `
     Downloaded a total of ${allRounds.length} entries.
     Fetched ${existingRounds.length} round entries from the DB.
     Fetched ${existingDistributions.length} distr entries from the DB.
-    Saving rounds data: ${await insertRoundResult}.
-    Saving distribution data: ${await insertDistrResult}.
+    Saving rounds data: ${insertRoundResult}.
+    Saving distribution data: ${insertDistrResult}.
   `;
 
-  return message;
+  return await message;
 };
 
 module.exports = {

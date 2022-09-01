@@ -46,8 +46,8 @@ const fetchDataAndUpdate = async () => {
   const newDistributions = allDistributions.filter(
     (e) => !existingDistributions.includes(e.drawNumber)
   );
-  const insertRoundResult = insertData(Round, newRounds);
-  const insertDistrResult = insertData(Distribution, newDistributions);
+  const insertRoundResult = await insertData(Round, newRounds);
+  const insertDistrResult = await insertData(Distribution, newDistributions);
 
   const logMessage = await generateLogMessage(
     allRounds,
@@ -57,7 +57,7 @@ const fetchDataAndUpdate = async () => {
     insertDistrResult
   );
 
-  return { status: 200, body: logMessage };
+  return await { status: 200, body: logMessage };
 };
 
 exports.fetchDataAndUpdate = fetchDataAndUpdate;
