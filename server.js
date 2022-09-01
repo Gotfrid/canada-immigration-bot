@@ -12,7 +12,7 @@ const {
   last50Handler,
   changeHandler,
 } = require("./src/handlers");
-const { debugHandler } = require("./src/adminHandlers");
+const { debugHandler, statsHandler } = require("./src/adminHandlers");
 
 logger(console, {
   format: ":date(yyyy-mm-dd HH:MM:ss) :label",
@@ -63,6 +63,8 @@ bot.onText(/^\/last50$/, async (msg) => last50Handler(bot, msg));
 bot.onText(/^\/debug$/, (msg) =>
   debugHandler(bot, msg, ADMIN_CHAT_IDS, MONGO_URI)
 );
+
+bot.onText(/^\/stats$/, (msg) => statsHandler(bot, msg, ADMIN_CHAT_IDS));
 
 // Watch for data changes - but only in prod or stage
 if (process.env.MODE !== "test") {
