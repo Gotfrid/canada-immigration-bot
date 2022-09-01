@@ -47,14 +47,13 @@ const fetchDataAndUpdate = async () => {
   const newRounds = allRounds.filter(
     (e) => !existingRounds.includes(e.drawNumber)
   );
-  logMessage += `\nWriting ${newRounds.length} new round entries to the DB.`;
 
   const newDistributions = allDistributions.filter(
     (e) => !existingDistributions.includes(e.drawNumber)
   );
-  logMessage += `\nWriting ${newDistributions.length} new distribution entries to the DB.`;
 
   if (newRounds.length > 0) {
+    logMessage += `\nWriting ${newRounds.length} new round entries to the DB.`;
     const insertRoundResult = insertData(Round, newRounds);
     logMessage +=
       insertRoundResult > 0
@@ -63,6 +62,7 @@ const fetchDataAndUpdate = async () => {
   }
 
   if (newDistributions.length > 0) {
+    logMessage += `\nWriting ${newDistributions.length} new distribution entries to the DB.`;
     const insertDistrResult = insertData(Distribution, newDistributions);
     logMessage +=
       insertDistrResult > 0
