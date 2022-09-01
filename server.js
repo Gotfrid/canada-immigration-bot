@@ -28,6 +28,7 @@ const BOT_TOKEN =
     : process.env.PROD_BOT_TOKEN;
 
 const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
+const GROUPS = JSON.parse(process.env.GROUP_CHAT_IDS);
 
 const MONGO_URI =
   process.env.MODE === "stage"
@@ -62,5 +63,7 @@ bot.onText(/^\/stats$/, (msg) => statsHandler(bot, msg, ADMINS));
 // Watch for data changes - but only in prod or stage
 if (process.env.MODE !== "test") {
   const roundEventEmitter = Round.watch();
-  roundEventEmitter.on("change", async (change) => changeHandler(bot, change));
+  roundEventEmitter.on("change", async (change) =>
+    changeHandler(bot, change, GROUPS)
+  );
 }
