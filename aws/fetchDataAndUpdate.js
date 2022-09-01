@@ -10,7 +10,7 @@ const { Round, Distribution } = require(`${__dirname}/./../mongo/schema`);
 
 // Load env variables when testing locally. On AWS env vars are defined separately.
 let MONGO_URI = "";
-if (process.env.MODE === "test") {
+if (process.env.MODE === "stage") {
   require("dotenv").config({ path: `${__dirname}/./../config/.env` });
   MONGO_URI = process.env.STAGE_MONGO_URI;
 } else {

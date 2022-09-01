@@ -6,7 +6,8 @@
   },
   "scripts": {
     "start": "export MODE=production && node server.js",
-    "dev": "export MODE=test && nodemon server.js"
+    "dev": "export MODE=stage && nodemon server.js",
+    "test-lambda": "export MODE=stage && node index.js"
   },
   "dependencies": {
     "console-stamp": "^3.0.6",
