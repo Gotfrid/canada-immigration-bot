@@ -11,7 +11,7 @@ const {
   lastHandler,
   last50Handler,
   changeHandler,
-} = require("./src/handlers");
+} = require("./src/publicHandlers");
 const { debugHandler, statsHandler } = require("./src/adminHandlers");
 
 logger(console, {
