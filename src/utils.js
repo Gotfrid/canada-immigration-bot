@@ -54,12 +54,16 @@ const distributionMessage = (document) => {
     (key) => key.startsWith("dd") && key !== "dd18"
   );
   const data = keys.map((key) => [keyMapping[key], doc[key]]);
-  const table = new AsciiTable();
-  table.setHeading("Range", "Candidates").addRowMatrix(data);
-  return `
-  <strong>CRS score distribution</strong>\n<i>as of ${
-    document.drawDistributionAsOn
-  }</i>\n<pre>${table.toString()}</pre>\n<strong>Total</strong>: ${doc.dd18}`;
+  const table = new AsciiTable()
+    .setHeading("Range", "Candidates")
+    .addRowMatrix(data);
+
+  const title = "<strong>CRS score distribution</strong>";
+  const subtitle = `<i>as of ${document.drawDistributionAsOn}</i>`;
+  const footer = `<strong>Total</strong>: ${doc.dd18}`;
+  const tableString = `<pre>${table.toString()}</pre>`;
+
+  return [title, subtitle, tableString, footer].join("\n");
 };
 
 exports.welcomeMessage = welcomeMessage;
