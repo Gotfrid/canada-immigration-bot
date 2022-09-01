@@ -21,20 +21,17 @@ logger(console, {
 // read env variables
 dotenv.config({ path: `${__dirname}/config/.env` });
 
-const BOT_TOKEN = process.env.BOT_TOKEN;
+const BOT_TOKEN =
+  process.env.MODE === "stage"
+    ? process.env.STAGE_BOT_TOKEN
+    : process.env.PROD_BOT_TOKEN;
+
 const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
 
-let MONGO_URI = "";
-switch (process.env.MODE) {
-  case "test":
-    MONGO_URI = process.env.TEST_MONGO_URI;
-    break;
-  case "stage":
-    MONGO_URI = process.env.STAGE_MONGO_URI;
-    break;
-  default:
-    MONGO_URI = process.env.PROD_MONGO_URI;
-}
+const MONGO_URI =
+  process.env.MODE === "stage"
+    ? process.env.STAGE_MONGO_URI
+    : process.env.PROD_MONGO_URI;
 
 // Connect to MongoDB
 mongoose.connect(
