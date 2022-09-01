@@ -70,7 +70,6 @@ const fetchDataAndUpdate = async () => {
         : "\nNew rounds data is saved successfully.";
   }
 
-  // TODO: async works not correctly: message is returned before data is acrtually written
   return { status: 200, body: logMessage };
 };
 
