@@ -1,8 +1,8 @@
 {
   "main": "server.js",
   "engines": {
-    "node": "18.8",
-    "npm": "8.18"
+    "node": "18.12.1",
+    "npm": "8.19.2"
   },
   "scripts": {
     "start": "export MODE=production && node server.js",
@@ -14,7 +14,7 @@
     "console-stamp": "^3.0.6",
     "dotenv": "^16.0.1",
     "mongoose": "^6.5.3",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.3.0",
     "node-telegram-bot-api": "^0.59.0"
   },
   "devDependencies": {

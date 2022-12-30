@@ -1,11 +1,10 @@
-const fetch = require("node-fetch");
-
 /**
  * Helper function to download all rounds data
  * and only return necessary data.
  * @returns { Object[] }
  */
 const fetchAllData = async () => {
+  const {default: fetch} = await import("node-fetch");
   const rawData = await fetch(process.env.DATA_URL, { method: "GET" });
   const rawJson = await rawData.json();
   const roundData = await rawJson.rounds.map((round) => {
