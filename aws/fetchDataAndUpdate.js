@@ -24,9 +24,7 @@ const mongo_options = {
  * @returns { Object } - response object that will display in AWS log
  */
 const fetchDataAndUpdate = async (mongo_uri) => {
-  mongoose.connect(mongo_uri, mongo_options, () =>
-    console.info("Successfully connected to MongoDB")
-  );
+  await mongoose.connect(mongo_uri, mongo_options)
   const [allRounds, allDistributions] = await fetchAllData();
   const existingRounds = await fetchExistingData(Round);
   const existingDistributions = await fetchExistingData(Distribution);
@@ -39,7 +37,7 @@ const fetchDataAndUpdate = async (mongo_uri) => {
   const insertRoundResult = await insertData(Round, newRounds);
   const insertDistrResult = await insertData(Distribution, newDistributions);
 
-  const logMessage = await generateLogMessage(
+  const logMessage = generateLogMessage(
     allRounds,
     existingRounds,
     existingDistributions,
@@ -47,7 +45,7 @@ const fetchDataAndUpdate = async (mongo_uri) => {
     insertDistrResult
   );
 
-  return await { status: 200, body: logMessage };
+  return { status: 200, body: logMessage };
 };
 
 exports.fetchDataAndUpdate = fetchDataAndUpdate;
