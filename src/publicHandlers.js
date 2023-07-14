@@ -3,6 +3,7 @@ const {
   lastRoundMessage,
   last50Message,
   distributionMessage,
+  aboutMessage
 } = require("./utils");
 const { Round, Subscriber, User, Distribution } = require("../mongo/schema");
 
@@ -120,6 +121,12 @@ const distributionHandler = async (bot, msg) => {
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
+const aboutHandler = async (bot, msg) => {
+  console.info("Received `about` command from", msg.chat.id);
+  const message = aboutMessage()
+  await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
+}
+
 exports.startHandler = startHandler;
 exports.testHandler = testHandler;
 exports.subscribeHandler = subscribeHandler;
@@ -128,3 +135,4 @@ exports.lastHandler = lastHandler;
 exports.last50Handler = last50Handler;
 exports.changeHandler = changeHandler;
 exports.distributionHandler = distributionHandler;
+exports.aboutHandler = aboutHandler;
