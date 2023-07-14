@@ -26,7 +26,7 @@ const lastRoundMessage = (round, includeTitle = false) => {
 
 const last50Message = (document) => {
   return document
-    .sort((a, b) => (a.drawDate > b.drawDate ? 1 : -1))
+    .sort((a, b) => a.drawNumber.localeCompare(b.drawNumber))
     .reduce((prev, next) => {
       let program;
       switch (next.drawName) {
@@ -38,6 +38,9 @@ const last50Message = (document) => {
           break;
         case "Canadian Experience Class":
           program = " (CEC).";
+          break;
+        case "Federal Skilled Worker":
+          program = " (FSW).";
           break;
         default:
           program = ` (${next.drawName}).`;
