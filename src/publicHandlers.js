@@ -113,7 +113,7 @@ const changeHandler = async (bot, change, groupIds) => {
 const distributionHandler = async (bot, msg) => {
   console.info("Received `distribution` command from", msg.chat.id);
   const crsDocument = await Distribution.find()
-    .sort({ drawDate: -1 })
+    .sort((a, b) => a.drawNumber.localeCompare(b.drawNumber))
     .limit(1)
     .exec();
   const message = distributionMessage(crsDocument[0]);
