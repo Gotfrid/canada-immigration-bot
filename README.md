@@ -15,7 +15,7 @@ __Planned__:
 
 ## Infrastructure
 
-The bot is deployed to [Heroku](http://heroku.com/) and is re-deployed on each push to main branch. The bot is working in polling mode.
+The bot is deployed to [fly.io](http://fly.io/) and should be redeployed manually via CLI. The bot is working in polling mode.
 
 Historical data is stored in a MongoDB which is deployed at [MongoDB Atlas](https://www.mongodb.com/atlas).
 
