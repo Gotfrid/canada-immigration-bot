@@ -70,7 +70,19 @@ const distributionMessage = (document) => {
   return [title, subtitle, tableString, footer].join("\n");
 };
 
+const aboutMessage = () => {
+  const title = "<strong>Hey 👋</strong>";
+  const body1 = "I'm happy that you decided yo use this bot. I hope it will assist you in the immigration process!"
+  const body2 = "Apart from this bot, I'm developing a visual dashboard to help you better digest numbers 🫣."
+  const body3 = "Feel free to give it a try: <a href='https://canadian-express.vercel.app/'>Canadian Express</a>"
+  const body4 = "If you have any questions, send me a message - @Gotf1d."
+  const signature = "Best,\nPavel"
+
+  return [title, body1, body2, body3, body4, signature].join("\n");
+}
+
 exports.welcomeMessage = welcomeMessage;
 exports.lastRoundMessage = lastRoundMessage;
 exports.last50Message = last50Message;
 exports.distributionMessage = distributionMessage;
+exports.aboutMessage = aboutMessage;

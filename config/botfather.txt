@@ -23,3 +23,4 @@ unsubscribe - Unsubscribe
 last - Last CRS score
 last50 - Last 50 CRS scores
 distribution - CRS score distribution
+about - Learn more
