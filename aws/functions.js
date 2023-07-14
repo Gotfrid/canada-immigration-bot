@@ -7,7 +7,7 @@ const fetchAllData = async () => {
   const {default: fetch} = await import("node-fetch");
   const rawData = await fetch(process.env.DATA_URL, { method: "GET" });
   const rawJson = await rawData.json();
-  const roundData = await rawJson.rounds.map((round) => {
+  const roundData = rawJson.rounds.map((round) => {
     return {
       drawNumber: round.drawNumber,
       drawDate: round.drawDate,
@@ -19,7 +19,7 @@ const fetchAllData = async () => {
       drawCRS: Number(round.drawCRS),
     };
   });
-  const distributionData = await rawJson.rounds.map((round) => {
+  const distributionData = rawJson.rounds.map((round) => {
     return {
       drawNumber: round.drawNumber,
       drawDistributionAsOn: round.drawDistributionAsOn,
@@ -63,23 +63,24 @@ const fetchExistingData = async (model) => {
  * @param {Array<Object>} data
  * @returns {Number}
  */
-const insertData = (model, data) => {
+const insertData = async (model, data) => {
   if (data.length === 0) return "Skip";
-  const result = model
-    .insertMany(data)
-    .then(() => "Success")
-    .catch(() => "Fail");
-  return result;
+  try {
+    await model.insertMany(data);
+    return "Success"
+  } catch(e) {
+    return "Fail"
+  }
 };
 
-const generateLogMessage = async (
+const generateLogMessage = (
   allRounds,
   existingRounds,
   existingDistributions,
   insertRoundResult,
   insertDistrResult
 ) => {
-  const message = await `
+  const message = `
     Downloaded a total of ${allRounds.length} entries.
     Fetched ${existingRounds.length} round entries from the DB.
     Fetched ${existingDistributions.length} distr entries from the DB.
@@ -87,7 +88,7 @@ const generateLogMessage = async (
     Saving distribution data: ${insertDistrResult}.
   `;
 
-  return await message;
+  return message;
 };
 
 module.exports = {
