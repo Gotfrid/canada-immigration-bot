@@ -17,6 +17,7 @@ const welcomeMessage = (userName) => {
 const lastRoundMessage = (round, includeTitle = false) => {
   return (
     `${includeTitle ? "🎉 <strong>New round</strong>\n" : ""}` +
+    `Draw: ${round.drawName}\n` +
     `Date of round: ${round.drawDateTime}\n` +
     `CRS score: <strong>${round.drawCRS}</strong>\n` +
     `Invitations: ${round.drawSizeStr}`
