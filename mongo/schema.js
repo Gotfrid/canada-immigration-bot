@@ -42,6 +42,7 @@ const distributionSchema = new Schema({
     index: true,
     unique: true,
   },
+  drawDate: String, // Probably should be Date, but string is OK
   drawDistributionAsOn: String,
   dd1: String,
   dd2: String,

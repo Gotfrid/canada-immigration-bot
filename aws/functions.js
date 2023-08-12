@@ -4,7 +4,7 @@
  * @returns { Object[] }
  */
 const fetchAllData = async () => {
-  const {default: fetch} = await import("node-fetch");
+  const { default: fetch } = await import("node-fetch");
   const rawData = await fetch(process.env.DATA_URL, { method: "GET" });
   const rawJson = await rawData.json();
   const roundData = rawJson.rounds.map((round) => {
@@ -68,9 +68,9 @@ const insertData = async (model, data) => {
   if (data.length === 0) return "Skip";
   try {
     await model.insertMany(data);
-    return "Success"
-  } catch(e) {
-    return "Fail"
+    return "Success";
+  } catch (e) {
+    return "Fail";
   }
 };
 
