@@ -57,9 +57,7 @@ const last50Message = (document) => {
 
 const distributionMessage = (document) => {
   const doc = JSON.parse(JSON.stringify(document));
-  const keys = Object.keys(doc).filter(
-    (key) => key.startsWith("dd") && key !== "dd18"
-  );
+  const keys = ["dd1", "dd2", "dd3", "dd9", "dd15", "dd16", "dd17"];
   const data = keys.map((key) => [keyMapping[key], doc[key]]);
   const table = new AsciiTable()
     .setHeading("Range", "Candidates")
