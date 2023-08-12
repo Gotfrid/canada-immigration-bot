@@ -3,7 +3,8 @@ const {
   lastRoundMessage,
   last50Message,
   distributionMessage,
-  aboutMessage
+  aboutMessage,
+  dashboardMessage,
 } = require("./utils");
 const { Round, Subscriber, User, Distribution } = require("../mongo/schema");
 
@@ -114,7 +115,7 @@ const changeHandler = async (bot, change, groupIds) => {
 const distributionHandler = async (bot, msg) => {
   console.info("Received `distribution` command from", msg.chat.id);
   const crsDocument = await Distribution.find()
-    .sort({drawDate: -1})
+    .sort({ drawDate: -1 })
     .limit(1)
     .exec();
   const message = distributionMessage(crsDocument[0]);
@@ -123,9 +124,16 @@ const distributionHandler = async (bot, msg) => {
 
 const aboutHandler = async (bot, msg) => {
   console.info("Received `about` command from", msg.chat.id);
-  const message = aboutMessage()
+  const message = aboutMessage();
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
-}
+};
+
+const dashboardHandler = async (bot, msg) => {
+  console.info("Received `dashboard` command from", msg.chat.id);
+  const message = dashboardMessage();
+  console.log(message);
+  await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
+};
 
 exports.startHandler = startHandler;
 exports.testHandler = testHandler;
@@ -136,3 +144,4 @@ exports.last50Handler = last50Handler;
 exports.changeHandler = changeHandler;
 exports.distributionHandler = distributionHandler;
 exports.aboutHandler = aboutHandler;
+exports.dashboardHandler = dashboardHandler;

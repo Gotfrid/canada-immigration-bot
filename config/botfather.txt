@@ -18,9 +18,10 @@ https://github.com/Gotfrid/canada-immigration-bot
 https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRZO8bVp-qYiOMoM3FYxkl5H051UXKY70_jg&usqp=CAU
 
 # Commands
-subscribe - Subscribe to notifications
-unsubscribe - Unsubscribe
 last - Last CRS score
 last50 - Last 50 CRS scores
+dashboard - Explore data visually
 distribution - CRS score distribution
+subscribe - Subscribe to notifications
+unsubscribe - Unsubscribe
 about - Learn more
