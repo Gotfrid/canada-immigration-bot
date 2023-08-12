@@ -29,31 +29,30 @@ const lastRoundMessage = (round, includeTitle = false) => {
 };
 
 const last50Message = (document) => {
-  return document
-    .sort((a, b) => a.drawNumber.localeCompare(b.drawNumber))
-    .reduce((prev, next) => {
-      let program;
-      switch (next.drawName) {
-        case "No Program Specified":
-          program = ".";
-          break;
-        case "Provincial Nominee Program":
-          program = " (PNP).";
-          break;
-        case "Canadian Experience Class":
-          program = " (CEC).";
-          break;
-        case "Federal Skilled Worker":
-          program = " (FSW).";
-          break;
-        default:
-          program = ` (${next.drawName}).`;
-      }
-      return (
-        prev +
-        `${next.drawNumber}. ${next.drawDateFull} - ${next.drawCRS}${program}\n`
-      );
-    }, "");
+  const data = document
+    .sort((a, b) => b.drawNumber.localeCompare(a.drawNumber))
+    .map((round) => {
+      const program =
+        round.drawName === "No Program Specified"
+          ? "N/A"
+          : round.drawName === "Provincial Nominee Program"
+          ? "PNP"
+          : round.drawName === "Canadian Experience Class"
+          ? "CEC"
+          : round.drawName === "Federal Skilled Worker"
+          ? "FSW"
+          : "OTHER";
+      return [round.drawDate, round.drawCRS, program];
+    });
+
+  const table = new AsciiTable()
+    .setHeading("Date", "Score", "Program")
+    .addRowMatrix(data);
+
+  const title = "<strong>Last 50 scores</strong>";
+  const tableString = `<pre>${table.toString()}</pre>`;
+
+  return [title, tableString].join("\n");
 };
 
 const distributionMessage = (document) => {
