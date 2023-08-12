@@ -13,6 +13,7 @@ const {
   distributionHandler,
   changeHandler,
   aboutHandler,
+  dashboardHandler,
 } = require("./src/publicHandlers");
 const { debugHandler, statsHandler } = require("./src/adminHandlers");
 
@@ -56,6 +57,7 @@ bot.onText(/^\/last$/, (msg) => lastHandler(bot, msg));
 bot.onText(/^\/last50$/, (msg) => last50Handler(bot, msg));
 bot.onText(/^\/distribution$/, (msg) => distributionHandler(bot, msg));
 bot.onText(/^\/about$/, (msg) => aboutHandler(bot, msg));
+bot.onText(/^\/dashboard$/, (msg) => dashboardHandler(bot, msg));
 
 // Admin commands
 bot.onText(/^\/test$/, (msg) => testHandler(bot, msg));

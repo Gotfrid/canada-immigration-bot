@@ -76,16 +76,24 @@ const distributionMessage = (document) => {
 
 const aboutMessage = () => {
   const title = "Hey 👋\n";
-  const body1 = "I'm happy that you decided to use this bot. I hope it will assist you in the immigration process!\n"
-  const body2 = "In addition to this bot, I'm developing a <a href='https://canadian-express.vercel.app/'>Canadian Express</a> dashboard to help you better digest numbers ⭐\n"
-  const body3 = "If you have any questions or suggestions, send me a message - @Gotf1d.\n"
-  const signature = "Best,\nPavel 🇨🇦"
+  const body1 =
+    "I'm happy that you decided to use this bot. I hope it will assist you in the immigration process!\n";
+  const body2 =
+    "In addition to this bot, I'm developing a <a href='https://canadian-express.vercel.app/'>Canadian Express</a> dashboard to help you better digest numbers ⭐\n";
+  const body3 =
+    "If you have any questions or suggestions, send me a message - @Gotf1d.\n";
+  const signature = "Best,\nPavel 🇨🇦";
 
   return [title, body1, body2, body3, signature].join("\n");
-}
+};
+
+const dashboardMessage = () => {
+  return "You can explore the data on this dashboard:\n\nhttps://canadian-express.vercel.app";
+};
 
 exports.welcomeMessage = welcomeMessage;
 exports.lastRoundMessage = lastRoundMessage;
 exports.last50Message = last50Message;
 exports.distributionMessage = distributionMessage;
 exports.aboutMessage = aboutMessage;
+exports.dashboardMessage = dashboardMessage;
