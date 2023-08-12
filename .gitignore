@@ -106,3 +106,4 @@ dist
 # AWS lambda deployment zip
 deploy.zip
 aws/rounds.json
+.venv
