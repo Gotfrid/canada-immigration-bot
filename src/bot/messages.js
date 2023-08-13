@@ -1,5 +1,5 @@
 const AsciiTable = require("ascii-table");
-const keyMapping = require("../config/distributionKeyMapping");
+const keyMapping = require("../database/distributionKeyMapping");
 
 const welcomeMessage = (userName) => {
   return (

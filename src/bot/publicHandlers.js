@@ -5,8 +5,8 @@ const {
   distributionMessage,
   aboutMessage,
   dashboardMessage,
-} = require("./utils");
-const { Round, Subscriber, User, Distribution } = require("../mongo/schema");
+} = require("./messages");
+const { Round, Subscriber, User, Distribution } = require("../database/schema");
 
 const startHandler = async (bot, msg) => {
   // It makes sense to reset user in the DB when they `start`

@@ -11,7 +11,7 @@ const {
   insertData,
   generateLogMessage,
 } = require("./functions");
-const { Round, Distribution } = require(`${__dirname}/./../mongo/schema`);
+const { Round, Distribution } = require(`${__dirname}/./../database/schema`);
 
 const mongo_options = {
   useNewUrlParser: true,
