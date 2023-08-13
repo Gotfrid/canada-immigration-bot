@@ -1,10 +1,5 @@
 const { MongoClient } = require("mongodb");
-const dotenv = require("dotenv");
-
-dotenv.config();
-
-const MONGO_URI =
-  process.env.MODE === "stage" ? process.env.STAGE_MONGO_URI : process.env.PROD_MONGO_URI;
+const { MONGO_URI } = require("../config");
 
 const client = new MongoClient(MONGO_URI, {
   useNewUrlParser: true,
@@ -14,13 +9,5 @@ const client = new MongoClient(MONGO_URI, {
 
 client.on("connectionReady", () => console.info("MongoDB connection: ready"));
 client.on("connectionClosed", () => console.info("MongoDB connection: closed"));
-
-// client
-//   .db("test")
-//   .collection("rounds")
-//   .watch()
-//   .on("change", (change) => {
-//     console.log(change);
-//   });
 
 module.exports = client;

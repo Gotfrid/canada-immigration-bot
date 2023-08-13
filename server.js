@@ -14,6 +14,7 @@ const {
 } = require("./src/bot/publicHandlers");
 const { statsHandler, testHandler } = require("./src/bot/adminHandlers");
 const { setupMongoCleanup } = require("./src/utils");
+const { MONGO_DB } = require("./src/config");
 
 mongo.connect();
 setupMongoCleanup(mongo);
@@ -33,8 +34,4 @@ bot.onText(/^\/test$/, testHandler);
 bot.onText(/^\/stats$/, statsHandler);
 
 // Watch for data changes - but only in prod or stage
-mongo
-  .db(process.env.MONGO_DB ?? "test")
-  .collection("rounds")
-  .watch()
-  .on("change", changeHandler);
+mongo.db(MONGO_DB).collection("rounds").watch().on("change", changeHandler);

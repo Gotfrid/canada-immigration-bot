@@ -1,5 +1,3 @@
-const dotenv = require("dotenv");
-
 const {
   welcomeMessage,
   lastRoundMessage,
@@ -18,8 +16,7 @@ const {
   getLastDistribution,
   getAllSubscriberIds,
 } = require("../database/mongoFunctions");
-
-const GROUP_CHAT_IDS = JSON.parse(process.env.GROUP_CHAT_IDS);
+const { GROUP_CHAT_IDS } = require("../config");
 
 const startHandler = async (msg) => {
   console.info("Received `start` command from", msg.chat.id);

@@ -2,14 +2,9 @@
  * These handlers are created only for admin use
  * and are not "visible" to the public.
  */
-const dotenv = require("dotenv");
-
 const bot = require("./botClient");
 const { getInternalStats } = require("../database/mongoFunctions");
-
-dotenv.config();
-
-const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
+const { ADMIN_CHAT_IDS } = require("../config");
 
 /**
  * Send a message with DB stats
@@ -17,7 +12,7 @@ const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
  * @returns {void}
  */
 const statsHandler = async (msg) => {
-  if (!ADMINS.includes(msg.chat.id)) {
+  if (!ADMIN_CHAT_IDS.includes(msg.chat.id)) {
     await bot.sendMessage(msg.chat.id, "Only admin can execute this command.");
   }
 
