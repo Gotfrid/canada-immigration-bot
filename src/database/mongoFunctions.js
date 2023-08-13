@@ -1,9 +1,5 @@
-const dotenv = require("dotenv");
+const { MONGO_DB } = require("../config");
 const client = require("./mongoClient");
-
-dotenv.config();
-
-const MONGO_DB = process.env.MONGO_DB ?? "test";
 
 const db = client.db(MONGO_DB);
 
