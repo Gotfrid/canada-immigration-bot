@@ -2,7 +2,7 @@
  * These handlers are created only for admin use
  * and are not "visible" to the public.
  */
-const { Round, Subscriber, User } = require("../mongo/schema");
+const { Round, Subscriber, User } = require("../database/schema");
 
 /**
  * Send a message with the MongoDB connection URL that is in use

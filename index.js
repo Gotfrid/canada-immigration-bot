@@ -2,10 +2,10 @@
  * This function is supposed to run on AWS Lambda.
  */
 
-const { fetchDataAndUpdate } = require("./aws/fetchDataAndUpdate");
+const { fetchDataAndUpdate } = require("./src/aws/fetchDataAndUpdate");
 
 if (process.env.MODE === "stage") {
-  require("dotenv").config({ path: `${__dirname}/config/.env` });
+  require("dotenv").config({ path: `${__dirname}/.env` });
   (async () => {
     fetchDataAndUpdate(process.env.STAGE_MONGO_URI).then((response) => {
       console.log(response);

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const logger = require("console-stamp");
 const TelegramBot = require("node-telegram-bot-api");
-const { Round } = require("./mongo/schema");
+
+const { Round } = require("./src/database/schema");
 const {
   startHandler,
   testHandler,
@@ -14,15 +14,11 @@ const {
   changeHandler,
   aboutHandler,
   dashboardHandler,
-} = require("./src/publicHandlers");
-const { debugHandler, statsHandler } = require("./src/adminHandlers");
-
-logger(console, {
-  format: ":date(yyyy-mm-dd HH:MM:ss) :label",
-});
+} = require("./src/bot/publicHandlers");
+const { debugHandler, statsHandler } = require("./src/bot/adminHandlers");
 
 // read env variables
-dotenv.config({ path: `${__dirname}/config/.env` });
+dotenv.config({ path: `${__dirname}/.env` });
 
 const BOT_TOKEN =
   process.env.MODE === "stage"
