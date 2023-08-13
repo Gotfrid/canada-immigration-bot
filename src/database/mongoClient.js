@@ -7,7 +7,7 @@ const client = new MongoClient(MONGO_URI, {
   monitorCommands: true,
 });
 
-client.on("connectionReady", () => console.info("MongoDB connection: ready"));
+client.on("connectionCreated", () => console.info("MongoDB connection: created"));
 client.on("connectionClosed", () => console.info("MongoDB connection: closed"));
 
 module.exports = client;
