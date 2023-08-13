@@ -6,7 +6,6 @@ const {
   aboutMessage,
   dashboardMessage,
 } = require("./messages");
-const { Round, Subscriber, User, Distribution } = require("../database/schema");
 const {
   createUser,
   createSubscriber,
@@ -79,12 +78,12 @@ const last50Handler = async (bot, msg) => {
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-// TODO: make sure it works with new mongo driver
 const changeHandler = async (bot, change, groupIds) => {
+  if (process.env.MODE === "test") return;
   if (change.operationType !== "insert") return;
 
   const message = lastRoundMessage(change.fullDocument, true);
-  const subscribers = await getAllSubscriberIds();
+  const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
   [...groupIds, ...subscriberIds].forEach(async (chatID) => {
