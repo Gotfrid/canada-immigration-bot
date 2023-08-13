@@ -1,8 +1,8 @@
 const dotenv = require("dotenv");
-const TelegramBot = require("node-telegram-bot-api");
 
 const mongo = require("./src/database/mongoClient");
-const { Round } = require("./src/database/schema");
+const bot = require("./src/bot/botClient");
+
 const {
   startHandler,
   testHandler,
@@ -15,22 +15,14 @@ const {
   aboutHandler,
   dashboardHandler,
 } = require("./src/bot/publicHandlers");
-const { debugHandler, statsHandler } = require("./src/bot/adminHandlers");
+const { statsHandler } = require("./src/bot/adminHandlers");
 const { setupMongoCleanup } = require("./src/utils");
 
 // read env variables
 dotenv.config();
 
-const BOT_TOKEN =
-  process.env.MODE === "stage" ? process.env.STAGE_BOT_TOKEN : process.env.PROD_BOT_TOKEN;
-
 const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
 const GROUPS = JSON.parse(process.env.GROUP_CHAT_IDS);
-
-const MONGO_URI =
-  process.env.MODE === "stage" ? process.env.STAGE_MONGO_URI : process.env.PROD_MONGO_URI;
-
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
 mongo.connect();
 setupMongoCleanup(mongo);
@@ -47,11 +39,11 @@ bot.onText(/^\/dashboard$/, (msg) => dashboardHandler(bot, msg));
 
 // Admin commands
 bot.onText(/^\/test$/, (msg) => testHandler(bot, msg));
-bot.onText(/^\/debug$/, (msg) => debugHandler(bot, msg, ADMINS, MONGO_URI));
 bot.onText(/^\/stats$/, (msg) => statsHandler(bot, msg, ADMINS));
 
 // Watch for data changes - but only in prod or stage
-if (process.env.MODE !== "test") {
-  const roundEventEmitter = Round.watch();
-  roundEventEmitter.on("change", async (change) => changeHandler(bot, change, GROUPS));
-}
+mongo
+  .db(process.env.MONGO_DB ?? "test")
+  .collection("rounds")
+  .watch()
+  .on("change", async (change) => changeHandler(bot, change, GROUPS));
