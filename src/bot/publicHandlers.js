@@ -5,6 +5,10 @@ const {
   distributionMessage,
   aboutMessage,
   dashboardMessage,
+  subscribedMessage,
+  alreadySubscribedMessage,
+  unsubscribedMessage,
+  alreadyUnsubscribedMessage,
 } = require("./messages");
 const bot = require("./botClient");
 const {
@@ -34,15 +38,9 @@ const subscribeHandler = async (msg) => {
   );
 
   if (isSubscribed) {
-    await bot.sendMessage(
-      msg.chat.id,
-      "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe.",
-    );
+    await bot.sendMessage(msg.chat.id, subscribedMessage());
   } else {
-    await bot.sendMessage(
-      msg.chat.id,
-      "You are already subscribed!\nIf you want, you can /unsubscribe.",
-    );
+    await bot.sendMessage(msg.chat.id, alreadySubscribedMessage());
   }
 };
 
@@ -50,15 +48,9 @@ const unsubscribeHandler = async (msg) => {
   console.info("Received `unsubscribe` command from", msg.chat.id);
   const isUnsubscribed = await removeSubscriber(msg.chat.id);
   if (isUnsubscribed) {
-    await bot.sendMessage(
-      msg.chat.id,
-      "You have unsubscribed.\nIf you want to receive notifications again, you can /subscribe.",
-    );
+    await bot.sendMessage(msg.chat.id, unsubscribedMessage());
   } else {
-    await bot.sendMessage(
-      msg.chat.id,
-      "You are not subscribed!\nIf you want to receive notifications, you can /subscribe.",
-    );
+    await bot.sendMessage(msg.chat.id, alreadyUnsubscribedMessage());
   }
 };
 
