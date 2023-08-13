@@ -2,7 +2,7 @@
  * These handlers are created only for admin use
  * and are not "visible" to the public.
  */
-const { Round, Subscriber, User } = require("../database/schema");
+const { getInternalStats } = require("../database/mongoFunctions");
 
 /**
  * Send a message with the MongoDB connection URL that is in use
@@ -34,10 +34,8 @@ const statsHandler = async (bot, msg, adminList) => {
     await bot.sendMessage(msg.chat.id, "Only admin can execute this command.");
     return;
   }
-  // Logic to fetch necessary data
-  const totalRounds = await Round.find().select({ drawNumber: 1 });
-  const totalUsers = await User.find().select({ chatID: 1 });
-  const totalSubscribers = await Subscriber.find().select({ chatID: 1 });
+
+  const { totalRounds, totalUsers, totalSubscribers } = getInternalStats();
 
   const message = `
     Total rounds: ${totalRounds.length} \

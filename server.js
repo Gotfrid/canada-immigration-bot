@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const TelegramBot = require("node-telegram-bot-api");
 
+const mongo = require("./src/database/mongoClient");
 const { Round } = require("./src/database/schema");
 const {
   startHandler,
@@ -16,34 +16,24 @@ const {
   dashboardHandler,
 } = require("./src/bot/publicHandlers");
 const { debugHandler, statsHandler } = require("./src/bot/adminHandlers");
+const { setupMongoCleanup } = require("./src/utils");
 
 // read env variables
-dotenv.config({ path: `${__dirname}/.env` });
+dotenv.config();
 
 const BOT_TOKEN =
-  process.env.MODE === "stage"
-    ? process.env.STAGE_BOT_TOKEN
-    : process.env.PROD_BOT_TOKEN;
+  process.env.MODE === "stage" ? process.env.STAGE_BOT_TOKEN : process.env.PROD_BOT_TOKEN;
 
 const ADMINS = JSON.parse(process.env.ADMIN_CHAT_IDS);
 const GROUPS = JSON.parse(process.env.GROUP_CHAT_IDS);
 
 const MONGO_URI =
-  process.env.MODE === "stage"
-    ? process.env.STAGE_MONGO_URI
-    : process.env.PROD_MONGO_URI;
-
-// Connect to MongoDB
-mongoose.connect(
-  MONGO_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => console.info(`Successfully connected to ${process.env.MODE} MongoDB`)
-);
+  process.env.MODE === "stage" ? process.env.STAGE_MONGO_URI : process.env.PROD_MONGO_URI;
 
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+
+mongo.connect();
+setupMongoCleanup(mongo);
 
 // Public commands
 bot.onText(/\/start/, (msg) => startHandler(bot, msg));
@@ -63,7 +53,5 @@ bot.onText(/^\/stats$/, (msg) => statsHandler(bot, msg, ADMINS));
 // Watch for data changes - but only in prod or stage
 if (process.env.MODE !== "test") {
   const roundEventEmitter = Round.watch();
-  roundEventEmitter.on("change", async (change) =>
-    changeHandler(bot, change, GROUPS)
-  );
+  roundEventEmitter.on("change", async (change) => changeHandler(bot, change, GROUPS));
 }
