@@ -45,9 +45,7 @@ const last50Message = (document) => {
       return [round.drawDate, round.drawCRS, program];
     });
 
-  const table = new AsciiTable()
-    .setHeading("Date", "Score", "Program")
-    .addRowMatrix(data);
+  const table = new AsciiTable().setHeading("Date", "Score", "Program").addRowMatrix(data);
 
   const title = "<strong>Last 50 scores</strong>";
   const tableString = `<pre>${table.toString()}</pre>`;
@@ -59,9 +57,7 @@ const distributionMessage = (document) => {
   const doc = JSON.parse(JSON.stringify(document));
   const keys = ["dd1", "dd2", "dd3", "dd9", "dd15", "dd16", "dd17"];
   const data = keys.map((key) => [keyMapping[key], doc[key]]);
-  const table = new AsciiTable()
-    .setHeading("Range", "Candidates")
-    .addRowMatrix(data);
+  const table = new AsciiTable().setHeading("Range", "Candidates").addRowMatrix(data);
 
   const title = "<strong>CRS score distribution</strong>";
   const subtitle = `<i>as of ${document.drawDistributionAsOn}</i>`;
@@ -77,8 +73,7 @@ const aboutMessage = () => {
     "I'm happy that you decided to use this bot. I hope it will assist you in the immigration process!\n";
   const body2 =
     "In addition to this bot, I'm developing a <a href='https://canadian-express.vercel.app/'>Canadian Express</a> dashboard to help you better digest numbers ⭐\n";
-  const body3 =
-    "If you have any questions or suggestions, send me a message - @Gotf1d.\n";
+  const body3 = "If you have any questions or suggestions, send me a message - @Gotf1d.\n";
   const signature = "Best,\nPavel 🇨🇦";
 
   return [title, body1, body2, body3, signature].join("\n");
@@ -88,9 +83,27 @@ const dashboardMessage = () => {
   return "You can explore the data on this dashboard:\n\nhttps://canadian-express.vercel.app";
 };
 
-exports.welcomeMessage = welcomeMessage;
-exports.lastRoundMessage = lastRoundMessage;
-exports.last50Message = last50Message;
-exports.distributionMessage = distributionMessage;
-exports.aboutMessage = aboutMessage;
-exports.dashboardMessage = dashboardMessage;
+const subscribedMessage = () =>
+  "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe.";
+
+const unsubscribedMessage = () =>
+  "You have unsubscribed.\nIf you want to receive notifications again, you can /subscribe.";
+
+const alreadySubscribedMessage = () =>
+  "You are already subscribed!\nIf you want, you can /unsubscribe.";
+
+const alreadyUnsubscribedMessage = () =>
+  "You are not subscribed!\nIf you want to receive notifications, you can /subscribe.";
+
+module.exports = {
+  welcomeMessage,
+  lastRoundMessage,
+  last50Message,
+  distributionMessage,
+  aboutMessage,
+  dashboardMessage,
+  subscribedMessage,
+  unsubscribedMessage,
+  alreadySubscribedMessage,
+  alreadyUnsubscribedMessage,
+};
