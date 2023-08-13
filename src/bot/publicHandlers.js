@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+
 const {
   welcomeMessage,
   lastRoundMessage,
@@ -6,6 +8,7 @@ const {
   aboutMessage,
   dashboardMessage,
 } = require("./messages");
+const bot = require("./botClient");
 const {
   createUser,
   createSubscriber,
@@ -16,19 +19,15 @@ const {
   getAllSubscriberIds,
 } = require("../database/mongoFunctions");
 
-const startHandler = async (bot, msg) => {
+const GROUP_CHAT_IDS = JSON.parse(process.env.GROUP_CHAT_IDS);
+
+const startHandler = async (msg) => {
   console.info("Received `start` command from", msg.chat.id);
   await createUser(msg.chat.id, msg.from.first_name, msg.from.last_name, new Date(msg.date * 1000));
   bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), { parse_mode: "HTML" });
 };
 
-// FIXME: either remove or move to adminHandlers
-const testHandler = async (bot, msg) => {
-  console.info("Received `test` command from", msg.chat.id);
-  await bot.sendMessage(msg.chat.id, "IT'S ALIVE!");
-};
-
-const subscribeHandler = async (bot, msg) => {
+const subscribeHandler = async (msg) => {
   console.info("Received `subscribe` command from", msg.chat.id);
   const isSubscribed = createSubscriber(
     msg.chat.id,
@@ -47,7 +46,7 @@ const subscribeHandler = async (bot, msg) => {
   }
 };
 
-const unsubscribeHandler = async (bot, msg) => {
+const unsubscribeHandler = async (msg) => {
   console.info("Received `unsubscribe` command from", msg.chat.id);
   const isUnsubscribed = removeSubscriber(msg.chat.id);
   if (isUnsubscribed) {
@@ -63,7 +62,7 @@ const unsubscribeHandler = async (bot, msg) => {
   }
 };
 
-const lastHandler = async (bot, msg) => {
+const lastHandler = async (msg) => {
   console.info("Received `last` command from", msg.chat.id);
   // const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
   const draw = await getLastDraw();
@@ -71,14 +70,14 @@ const lastHandler = async (bot, msg) => {
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-const last50Handler = async (bot, msg) => {
+const last50Handler = async (msg) => {
   console.info("Received `last50` command from", msg.chat.id);
   const data = await getLastNDraws(50);
   const message = last50Message(data);
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-const changeHandler = async (bot, change, groupIds) => {
+const changeHandler = async (change) => {
   if (process.env.MODE === "test") return;
   if (change.operationType !== "insert") return;
 
@@ -86,7 +85,7 @@ const changeHandler = async (bot, change, groupIds) => {
   const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
-  [...groupIds, ...subscriberIds].forEach(async (chatID) => {
+  [...GROUP_CHAT_IDS, ...subscriberIds].forEach(async (chatID) => {
     console.info("Sending notification to", chatID);
     // Possible failures: user has stopped the bot
     // but the DB still conains their chatID
@@ -101,27 +100,26 @@ const changeHandler = async (bot, change, groupIds) => {
   });
 };
 
-const distributionHandler = async (bot, msg) => {
+const distributionHandler = async (msg) => {
   console.info("Received `distribution` command from", msg.chat.id);
   const distribution = await getLastDistribution();
   const message = distributionMessage(distribution);
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-const aboutHandler = async (bot, msg) => {
+const aboutHandler = async (msg) => {
   console.info("Received `about` command from", msg.chat.id);
   const message = aboutMessage();
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
-const dashboardHandler = async (bot, msg) => {
+const dashboardHandler = async (msg) => {
   console.info("Received `dashboard` command from", msg.chat.id);
   const message = dashboardMessage();
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
 
 exports.startHandler = startHandler;
-exports.testHandler = testHandler;
 exports.subscribeHandler = subscribeHandler;
 exports.unsubscribeHandler = unsubscribeHandler;
 exports.lastHandler = lastHandler;
