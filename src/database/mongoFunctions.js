@@ -9,7 +9,8 @@ const rounds = db.collection("rounds");
 const distributions = db.collection("distributions");
 
 const createUser = async (chatID, firstName, lastName, startedAt) => {
-  await Promise.all([users.deleteOne({ chatID }), subscribers.deleteOne({ chatID })]);
+  await users.deleteOne({ chatID });
+  await subscribers.deleteOne({ chatID });
   await users.insertOne({ chatID, firstName, lastName, startedAt });
 };
 

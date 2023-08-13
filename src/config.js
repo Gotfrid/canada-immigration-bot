@@ -12,7 +12,7 @@ const BOT_TOKEN =
 
 const ADMIN_CHAT_IDS = JSON.parse(process.env.ADMIN_CHAT_IDS ?? []);
 
-const GROUP_CHAT_IDS = JSON.parse(process.env.GROUP_CHAT_IDS);
+const GROUP_CHAT_IDS = process.env.MODE ? [] : JSON.parse(process.env.GROUP_CHAT_IDS ?? []);
 
 module.exports = {
   ADMIN_CHAT_IDS,

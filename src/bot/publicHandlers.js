@@ -21,12 +21,12 @@ const { GROUP_CHAT_IDS } = require("../config");
 const startHandler = async (msg) => {
   console.info("Received `start` command from", msg.chat.id);
   await createUser(msg.chat.id, msg.from.first_name, msg.from.last_name, new Date(msg.date * 1000));
-  bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), { parse_mode: "HTML" });
+  await bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), { parse_mode: "HTML" });
 };
 
 const subscribeHandler = async (msg) => {
   console.info("Received `subscribe` command from", msg.chat.id);
-  const isSubscribed = createSubscriber(
+  const isSubscribed = await createSubscriber(
     msg.chat.id,
     msg.from.first_name,
     msg.from.last_name,
@@ -34,18 +34,21 @@ const subscribeHandler = async (msg) => {
   );
 
   if (isSubscribed) {
-    bot.sendMessage(
+    await bot.sendMessage(
       msg.chat.id,
       "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe.",
     );
   } else {
-    bot.sendMessage(msg.chat.id, "You are already subscribed!\nIf you want, you can /unsubscribe.");
+    await bot.sendMessage(
+      msg.chat.id,
+      "You are already subscribed!\nIf you want, you can /unsubscribe.",
+    );
   }
 };
 
 const unsubscribeHandler = async (msg) => {
   console.info("Received `unsubscribe` command from", msg.chat.id);
-  const isUnsubscribed = removeSubscriber(msg.chat.id);
+  const isUnsubscribed = await removeSubscriber(msg.chat.id);
   if (isUnsubscribed) {
     await bot.sendMessage(
       msg.chat.id,
@@ -82,7 +85,7 @@ const changeHandler = async (change) => {
   const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
-  [...GROUP_CHAT_IDS, ...subscriberIds].forEach(async (chatID) => {
+  for (const chatID of [...GROUP_CHAT_IDS, ...subscriberIds]) {
     console.info("Sending notification to", chatID);
     // Possible failures: user has stopped the bot
     // but the DB still conains their chatID
@@ -94,7 +97,7 @@ const changeHandler = async (change) => {
     } catch (error) {
       console.error("Message could not be sent.");
     }
-  });
+  }
 };
 
 const distributionHandler = async (msg) => {
