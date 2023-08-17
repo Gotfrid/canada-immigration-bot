@@ -4,14 +4,16 @@ Telegram bot to track latest drafts for [Express Entry](https://www.canada.ca/en
 
 ## Features
 
-__Implemented__:
-* Subscribe to get notified about the latest round. Time margin should not exceed ~5 minutes.
-* Get information about the last round
-* Get information about last 50 rounds
+**Implemented**:
 
-__Planned__:
-* Get score distribution for a given round
-* Use webhooks instead of polling
+- Subscribe to get notified about the latest round. Time margin should not exceed ~5 minutes.
+- Get information about the last round
+- Get information about last 50 rounds
+
+**Planned**:
+
+- Get score distribution for a given round
+- Use webhooks instead of polling
 
 ## Infrastructure
 
@@ -21,7 +23,16 @@ Historical data is stored in a MongoDB which is deployed at [MongoDB Atlas](http
 
 New data is checked with an [AWS Lambda](https://aws.amazon.com/lambda/) function which is invoked every 5 minutes. If new data is found, it is pushed to the MongoDB, which triggers an event in the bot app. This way, bot subscribers will receive notifications about a new round.
 
-## Contributing
-Please feel free to open issues if you face any problems or have improvement suggestions.
+## AWS Lambda Deployment
 
-You can also reach out to me directly via paveldemin@me.com or [Telegram](https://t.me/Gotfr1d).
+This bot relies on a lambda fucntion that runs every 5 minutes and pushed new data (if any) to the MongoDB.
+
+This function is deployed as a zip archive that includes all contents of this repo, except for the _config_ folder. To prepare this archive, run:
+
+```sh
+zip -r deploy.zip ./src ./node_modules ./package.json ./index.js
+```
+
+## Contributing
+
+TODO: code of contibuting?
