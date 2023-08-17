@@ -1,9 +1,16 @@
 const AsciiTable = require("ascii-table");
 const keyMapping = require("../database/distributionKeyMapping");
 
+/**
+ * Generate a message that user will see when interacting with the bot for the first time.
+ * @param {string} userName - First name of the user, if they provided it. If the name is not provided, falls back to 'friend'.
+ * @returns
+ */
 const welcomeMessage = (userName) => {
+  const name = userName || "friend";
+
   return (
-    `🇨🇦 <strong>Welcome, ${userName}!</strong>` +
+    `🇨🇦 <strong>Welcome, ${name}!</strong>` +
     "\n\n" +
     "This is a bot that can help you find necessary info about the immigration to Canada from the official website: canada.ca" +
     "\n\n" +
@@ -18,6 +25,17 @@ const welcomeMessage = (userName) => {
   );
 };
 
+/**
+ * Generate a message with the information on the latest round of invitations.
+ *
+ * This message is either sent on demand (when user types /last) or when a new round is added to the database.
+ * In the latter case, a title is added to the message, to make it more clear that this message comes from a notification.
+ * Currently, notification is sent to the Telegram Group chat, and to the subscribers.
+ *
+ * @param {Round} round - Mongo document with the draw data
+ * @param {boolean} includeTitle - Whether the message should start with "new round"
+ * @returns
+ */
 const lastRoundMessage = (round, includeTitle = false) => {
   return (
     `${includeTitle ? "🎉 <strong>New round</strong>\n" : ""}` +
@@ -28,8 +46,16 @@ const lastRoundMessage = (round, includeTitle = false) => {
   );
 };
 
-const last50Message = (document) => {
-  const data = document
+/**
+ * Generate a message with the information on the latest 50 rounds of invitations.
+ *
+ * In the current implementation, the message is formatted as a table with 3 columns: date, score, program.
+ *
+ * @param {Round[]} documents
+ * @returns
+ */
+const last50Message = (documents) => {
+  const data = documents
     .sort((a, b) => b.drawNumber.localeCompare(a.drawNumber))
     .map((round) => {
       const program =
@@ -53,6 +79,14 @@ const last50Message = (document) => {
   return [title, tableString].join("\n");
 };
 
+/**
+ * Generate a message with the information on the latest CRS score distribution.
+ *
+ * In the current implementation, the message is formatted as a table with 2 columns: bracket, number of candidates.
+ *
+ * @param {Distribution} document
+ * @returns
+ */
 const distributionMessage = (document) => {
   const doc = JSON.parse(JSON.stringify(document));
   const keys = ["dd1", "dd2", "dd3", "dd9", "dd15", "dd16", "dd17"];
@@ -67,6 +101,10 @@ const distributionMessage = (document) => {
   return [title, subtitle, tableString, footer].join("\n");
 };
 
+/**
+ * Generate a message with the information about the bot.
+ * @returns
+ */
 const aboutMessage = () => {
   const title = "Hey 👋\n";
   const body1 =
@@ -79,19 +117,39 @@ const aboutMessage = () => {
   return [title, body1, body2, body3, signature].join("\n");
 };
 
+/**
+ * Generate a message with the link to the dashboard.
+ * @returns
+ */
 const dashboardMessage = () => {
   return "You can explore the data on this dashboard:\n\nhttps://canadian-express.vercel.app";
 };
 
+/**
+ * Generate a message that user will see when they subscribe to notifications.
+ * @returns
+ */
 const subscribedMessage = () =>
   "You are now subscribed!\nIf you want to stop receiving notifications, you can /unsubscribe.";
 
+/**
+ * Generate a message that user will see when they unsubscribe from notifications.
+ * @returns
+ */
 const unsubscribedMessage = () =>
   "You have unsubscribed.\nIf you want to receive notifications again, you can /subscribe.";
 
+/**
+ * Generate a message that user will see when they try to subscribe, but they are already subscribed.
+ * @returns
+ */
 const alreadySubscribedMessage = () =>
   "You are already subscribed!\nIf you want, you can /unsubscribe.";
 
+/**
+ * Generate a message that user will see when they try to unsubscribe, but they are already unsubscribed.
+ * @returns
+ */
 const alreadyUnsubscribedMessage = () =>
   "You are not subscribed!\nIf you want to receive notifications, you can /subscribe.";
 
