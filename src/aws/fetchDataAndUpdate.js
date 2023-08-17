@@ -4,50 +4,46 @@
  * AWS configuration is done manually in the web interface.
  */
 
-const mongoose = require("mongoose");
-const {
-  fetchAllData,
-  fetchExistingData,
-  insertData,
-  generateLogMessage,
-} = require("./functions");
-const { Round, Distribution } = require(`${__dirname}/./../database/schema`);
+const { MONGO_URI, MONGO_DB } = require("../config");
+const { clientFactory } = require("../database/mongoClient");
+const { fetchLatestDrawData, findData, insertData } = require("./functions");
+const { filterNewData, generateLogMessage } = require("./helpers");
 
-const mongo_options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
+const fetchDataAndUpdate = async (mongoUri = MONGO_URI) => {
+  const mongoClient = clientFactory(mongoUri);
+  const db = mongoClient.db(MONGO_DB);
 
-/**
- * Wrapper function to perform all fetching and updating.
- * NB: `await` keywords are actually necessary here :)
- * @returns { Object } - response object that will display in AWS log
- */
-const fetchDataAndUpdate = async (mongo_uri) => {
-  await mongoose.connect(mongo_uri, mongo_options, () =>
-    console.log("Connected to MongoDB")
+  const fetchingPromises = [
+    fetchLatestDrawData(),
+    findData(db, "rounds"),
+    findData(db, "distributions"),
+  ];
+
+  const [latestData, existingRounds, existingDistributions] = (
+    await Promise.allSettled(fetchingPromises)
+  ).map((result) => result.value);
+
+  const newRounds = filterNewData(latestData.roundData, existingRounds);
+  const newDistributions = filterNewData(latestData.distData, existingDistributions);
+
+  const insertingPromises = [
+    insertData(db, "rounds", newRounds),
+    insertData(db, "distributions", newDistributions),
+  ];
+
+  const [insertRoundResult, insertDistrResult] = (await Promise.allSettled(insertingPromises)).map(
+    (result) => result.value,
   );
-  const [allRounds, allDistributions] = await fetchAllData();
-  const existingRounds = await fetchExistingData(Round);
-  const existingDistributions = await fetchExistingData(Distribution);
-  const newRounds = allRounds.filter(
-    (e) => !existingRounds.includes(e.drawNumber)
-  );
-  const newDistributions = allDistributions.filter(
-    (e) => !existingDistributions.includes(e.drawNumber)
-  );
-  const insertRoundResult = await insertData(Round, newRounds);
-  const insertDistrResult = await insertData(Distribution, newDistributions);
+
+  await mongoClient.close();
 
   const logMessage = generateLogMessage(
-    allRounds,
+    latestData.roundData,
     existingRounds,
     existingDistributions,
     insertRoundResult,
-    insertDistrResult
+    insertDistrResult,
   );
-
-  await mongoose.disconnect();
 
   return { status: 200, body: logMessage };
 };
