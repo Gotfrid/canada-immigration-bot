@@ -14,10 +14,13 @@ const ADMIN_CHAT_IDS = JSON.parse(process.env.ADMIN_CHAT_IDS ?? []);
 
 const GROUP_CHAT_IDS = process.env.MODE ? [] : JSON.parse(process.env.GROUP_CHAT_IDS ?? []);
 
+const DATA_URL = process.env.DATA_URL ?? "";
+
 module.exports = {
   ADMIN_CHAT_IDS,
   BOT_TOKEN,
   GROUP_CHAT_IDS,
   MONGO_URI,
   MONGO_DB,
+  DATA_URL,
 };
