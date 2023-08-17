@@ -9,8 +9,7 @@ const rounds = db.collection("rounds");
 const distributions = db.collection("distributions");
 
 const createUser = async (chatID, firstName, lastName, startedAt) => {
-  await users.deleteOne({ chatID });
-  await subscribers.deleteOne({ chatID });
+  await Promise.all([users.deleteOne({ chatID }), subscribers.deleteOne({ chatID })]);
   await users.insertOne({ chatID, firstName, lastName, startedAt });
 };
 
@@ -52,9 +51,8 @@ const getLastDistribution = async () => {
 };
 
 const getInternalStats = async () => {
-  const totalRounds = await rounds.countDocuments();
-  const totalUsers = await users.countDocuments();
-  const totalSubscribers = await subscribers.countDocuments();
+  const promises = [rounds.countDocuments(), users.countDocuments(), subscribers.countDocuments()];
+  const [totalRounds, totalUsers, totalSubscribers] = await Promise.all(promises);
   return { totalRounds, totalUsers, totalSubscribers };
 };
 
