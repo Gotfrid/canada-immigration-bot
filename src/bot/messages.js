@@ -47,6 +47,23 @@ const lastRoundMessage = (round, includeTitle = false) => {
 };
 
 /**
+ * Reduce all variants of program names to a small set of unified names
+ * @param {string} name - Draw name
+ * @returns {string} Standarized program name
+ */
+const standardizeProgramName = (name) => {
+  return name === "No Program Specified"
+    ? "N/A"
+    : name === "Provincial Nominee Program"
+    ? "PNP"
+    : name === "Canadian Experience Class"
+    ? "CEC"
+    : name === "Federal Skilled Worker"
+    ? "FSW"
+    : "OTHER";
+};
+
+/**
  * Generate a message with the information on the latest 50 rounds of invitations.
  *
  * In the current implementation, the message is formatted as a table with 3 columns: date, score, program.
@@ -58,16 +75,7 @@ const last50Message = (documents) => {
   const data = documents
     .sort((a, b) => b.drawNumber.localeCompare(a.drawNumber))
     .map((round) => {
-      const program =
-        round.drawName === "No Program Specified"
-          ? "N/A"
-          : round.drawName === "Provincial Nominee Program"
-          ? "PNP"
-          : round.drawName === "Canadian Experience Class"
-          ? "CEC"
-          : round.drawName === "Federal Skilled Worker"
-          ? "FSW"
-          : "OTHER";
+      const program = standardizeProgramName(round.drawName);
       return [round.drawDate, round.drawCRS, program];
     });
 
@@ -164,4 +172,5 @@ module.exports = {
   unsubscribedMessage,
   alreadySubscribedMessage,
   alreadyUnsubscribedMessage,
+  standardizeProgramName,
 };
