@@ -5,11 +5,12 @@
 const bot = require("./botClient");
 const { getInternalStats } = require("../database/mongoFunctions");
 const { ADMIN_CHAT_IDS } = require("../config");
+const TelegramBot = require("node-telegram-bot-api");
 
 /**
  * Send a message with DB stats
  * @param {TelegramBot.Message} msg
- * @returns {void}
+ * @returns {Promise<void>}
  */
 const statsHandler = async (msg) => {
   if (!ADMIN_CHAT_IDS.includes(msg.chat.id)) {
@@ -27,6 +28,10 @@ const statsHandler = async (msg) => {
   await bot.sendMessage(msg.chat.id, message);
 };
 
+/**
+ *
+ * @param {TelegramBot.Message} msg
+ */
 const testHandler = async (msg) => {
   console.info("Received `test` command from", msg.chat.id);
   await bot.sendMessage(msg.chat.id, "IT'S ALIVE!");

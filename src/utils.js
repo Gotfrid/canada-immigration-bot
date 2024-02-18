@@ -1,3 +1,7 @@
+/**
+ *
+ * @param {import("mongodb").MongoClient} mongo
+ */
 const setupMongoCleanup = (mongo) => {
   process.on("exit", async () => {
     await mongo.close();

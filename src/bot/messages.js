@@ -3,10 +3,10 @@ const keyMapping = require("../database/distributionKeyMapping");
 
 /**
  * Generate a message that user will see when interacting with the bot for the first time.
- * @param {string} userName - First name of the user, if they provided it. If the name is not provided, falls back to 'friend'.
+ * @param {string | undefined} userName - First name of the user, if they provided it. If the name is not provided, falls back to 'friend'.
  * @returns
  */
-const welcomeMessage = (userName) => {
+const welcomeMessage = (userName = undefined) => {
   const name = userName || "friend";
 
   return (
@@ -32,7 +32,7 @@ const welcomeMessage = (userName) => {
  * In the latter case, a title is added to the message, to make it more clear that this message comes from a notification.
  * Currently, notification is sent to the Telegram Group chat, and to the subscribers.
  *
- * @param {Round} round - Mongo document with the draw data
+ * @param {RoundClean} round - Mongo document with the draw data
  * @param {boolean} includeTitle - Whether the message should start with "new round"
  * @returns
  */
@@ -68,7 +68,7 @@ const standardizeProgramName = (name) => {
  *
  * In the current implementation, the message is formatted as a table with 3 columns: date, score, program.
  *
- * @param {Round[]} documents
+ * @param {RoundClean[]} documents
  * @returns
  */
 const last50Message = (documents) => {
@@ -79,7 +79,9 @@ const last50Message = (documents) => {
       return [round.drawDate, round.drawCRS, program];
     });
 
-  const table = new AsciiTable().setHeading("Date", "Score", "Program").addRowMatrix(data);
+  const table = new AsciiTable(undefined, undefined)
+    .setHeading("Date", "Score", "Program")
+    .addRowMatrix(data);
 
   const title = "<strong>Last 50 scores</strong>";
   const tableString = `<pre>${table.toString()}</pre>`;
@@ -92,14 +94,16 @@ const last50Message = (documents) => {
  *
  * In the current implementation, the message is formatted as a table with 2 columns: bracket, number of candidates.
  *
- * @param {Distribution} document
+ * @param {DistributionClean} document
  * @returns
  */
 const distributionMessage = (document) => {
   const doc = JSON.parse(JSON.stringify(document));
-  const keys = ["dd1", "dd2", "dd3", "dd9", "dd15", "dd16", "dd17"];
+  const keys = /** @type {const} */ (["dd1", "dd2", "dd3", "dd9", "dd15", "dd16", "dd17"]);
   const data = keys.map((key) => [keyMapping[key], doc[key]]);
-  const table = new AsciiTable().setHeading("Range", "Candidates").addRowMatrix(data);
+  const table = new AsciiTable(undefined, undefined)
+    .setHeading("Range", "Candidates")
+    .addRowMatrix(data);
 
   const title = "<strong>CRS score distribution</strong>";
   const subtitle = `<i>as of ${document.drawDistributionAsOn}</i>`;

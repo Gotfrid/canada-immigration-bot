@@ -1,3 +1,8 @@
+/**
+ * Get round meta information from the complete raw round data
+ * @param {RoundRaw} round
+ * @returns {RoundClean}
+ */
 const extractRoundData = (round) => {
   return {
     drawNumber: round.drawNumber,
@@ -11,36 +16,57 @@ const extractRoundData = (round) => {
   };
 };
 
+/**
+ * Get distribution information from the complete raw round data
+ * @param {RoundRaw} round
+ * @returns {DistributionClean}
+ */
 const extractDistributionData = (round) => {
   return {
     drawNumber: round.drawNumber,
     drawDate: round.drawDate,
     drawDistributionAsOn: round.drawDistributionAsOn,
-    dd1: round.dd1,
-    dd2: round.dd2,
-    dd3: round.dd3,
-    dd4: round.dd4,
-    dd5: round.dd5,
-    dd6: round.dd6,
-    dd7: round.dd7,
-    dd8: round.dd8,
-    dd9: round.dd9,
-    dd10: round.dd10,
-    dd11: round.dd11,
-    dd12: round.dd12,
-    dd13: round.dd13,
-    dd14: round.dd14,
-    dd15: round.dd15,
-    dd16: round.dd16,
-    dd17: round.dd17,
-    dd18: round.dd18,
+    dd1: Number(round.dd1),
+    dd2: Number(round.dd2),
+    dd3: Number(round.dd3),
+    dd4: Number(round.dd4),
+    dd5: Number(round.dd5),
+    dd6: Number(round.dd6),
+    dd7: Number(round.dd7),
+    dd8: Number(round.dd8),
+    dd9: Number(round.dd9),
+    dd10: Number(round.dd10),
+    dd11: Number(round.dd11),
+    dd12: Number(round.dd12),
+    dd13: Number(round.dd13),
+    dd14: Number(round.dd14),
+    dd15: Number(round.dd15),
+    dd16: Number(round.dd16),
+    dd17: Number(round.dd17),
+    dd18: Number(round.dd18),
   };
 };
 
+/**
+ * Given an array of fetched round data,
+ * filter out those rounds that are already stored in the database.
+ * @param {RoundClean[]} newData
+ * @param {string[]} oldData
+ * @returns
+ */
 const filterNewData = (newData, oldData) => {
   return newData.filter((e) => !oldData.includes(e.drawNumber));
 };
 
+/**
+ *
+ * @param {*} allRounds
+ * @param {*} existingRounds
+ * @param {*} existingDistributions
+ * @param {*} insertRoundResult
+ * @param {*} insertDistrResult
+ * @returns
+ */
 const generateLogMessage = (
   allRounds,
   existingRounds,

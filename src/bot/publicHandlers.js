@@ -1,5 +1,4 @@
 const TelegramBot = require("node-telegram-bot-api");
-const { ChangeStreamDocument } = require("mongodb");
 
 const {
   welcomeMessage,
@@ -32,8 +31,13 @@ const { GROUP_CHAT_IDS } = require("../config");
  */
 const startHandler = async (msg) => {
   console.info("Received `start` command from", msg.chat.id);
-  await createUser(msg.chat.id, msg.from.first_name, msg.from.last_name, new Date(msg.date * 1000));
-  await bot.sendMessage(msg.chat.id, welcomeMessage(msg.from.first_name), { parse_mode: "HTML" });
+  await createUser(
+    msg.chat.id,
+    msg.from?.first_name,
+    msg.from?.last_name,
+    new Date(msg.date * 1000),
+  );
+  await bot.sendMessage(msg.chat.id, welcomeMessage(msg.from?.first_name), { parse_mode: "HTML" });
 };
 
 /**
@@ -45,8 +49,8 @@ const subscribeHandler = async (msg) => {
   console.info("Received `subscribe` command from", msg.chat.id);
   const isSubscribed = await createSubscriber(
     msg.chat.id,
-    msg.from.first_name,
-    msg.from.last_name,
+    msg.from?.first_name,
+    msg.from?.last_name,
     new Date(msg.date * 1000),
   );
 
@@ -81,6 +85,9 @@ const lastHandler = async (msg) => {
   console.info("Received `last` command from", msg.chat.id);
   // const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
   const draw = await getLastDraw();
+  if (draw === null) {
+    return;
+  }
   const message = lastRoundMessage(draw);
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
@@ -105,6 +112,9 @@ const last50Handler = async (msg) => {
 const distributionHandler = async (msg) => {
   console.info("Received `distribution` command from", msg.chat.id);
   const distribution = await getLastDistribution();
+  if (distribution === null) {
+    return;
+  }
   const message = distributionMessage(distribution);
   await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
 };
@@ -133,14 +143,15 @@ const dashboardHandler = async (msg) => {
 
 /**
  * Handles change event in the MongoDB
- * @param {ChangeStreamDocument} change - Newly added document to the MongoDB
+ * @param {import("mongodb").ChangeStreamDocument} change - Newly added document to the MongoDB
  * @returns {Promise<void>} - A Promise that resolves when the message has been sent to the user.
  */
 const changeHandler = async (change) => {
   if (process.env.MODE === "test") return;
   if (change.operationType !== "insert") return;
 
-  const message = lastRoundMessage(change.fullDocument, true);
+  const round = /** @type {RoundClean} */ (change.fullDocument);
+  const message = lastRoundMessage(round, true);
   const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
