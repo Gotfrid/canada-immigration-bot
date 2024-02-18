@@ -9,6 +9,11 @@ const { clientFactory } = require("../database/mongoClient");
 const { fetchLatestDrawData, findData, insertData } = require("./functions");
 const { filterNewData, generateLogMessage } = require("./helpers");
 
+/**
+ *
+ * @param {string} mongoUri
+ * @returns
+ */
 const fetchDataAndUpdate = async (mongoUri = MONGO_URI) => {
   const mongoClient = clientFactory(mongoUri);
   const db = mongoClient.db(MONGO_DB);
@@ -21,7 +26,7 @@ const fetchDataAndUpdate = async (mongoUri = MONGO_URI) => {
 
   const [latestData, existingRounds, existingDistributions] = (
     await Promise.allSettled(fetchingPromises)
-  ).map((result) => result.value);
+  ).map((result) => (result.status === "fulfilled" ? result.value : result.reason));
 
   const newRounds = filterNewData(latestData.roundData, existingRounds);
   const newDistributions = filterNewData(latestData.distData, existingDistributions);
@@ -32,7 +37,7 @@ const fetchDataAndUpdate = async (mongoUri = MONGO_URI) => {
   ];
 
   const [insertRoundResult, insertDistrResult] = (await Promise.allSettled(insertingPromises)).map(
-    (result) => result.value,
+    (result) => (result.status === "fulfilled" ? result.value : result.reason),
   );
 
   await mongoClient.close();

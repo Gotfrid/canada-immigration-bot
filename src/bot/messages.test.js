@@ -12,15 +12,19 @@ const {
   standardizeProgramName,
 } = require("./messages");
 
+/** @type {RoundClean} */
 const MOCK_ROUND = {
   drawNumber: "1",
   drawName: "Express Entry",
   drawDate: "2022-01-01",
   drawDateTime: "2022-01-01T12:00:00.000Z",
-  drawCRS: "500",
+  drawCRS: 500,
   drawSizeStr: "5000",
+  drawSizeNum: 5000,
+  drawDateFull: "2022-01-01",
 };
 
+/** @type {RoundClean[]} */
 const MOCK_ROUNDS = [
   MOCK_ROUND,
   {
@@ -28,20 +32,35 @@ const MOCK_ROUNDS = [
     drawName: "Express Entry",
     drawDate: "2022-01-02",
     drawDateTime: "2022-01-02T12:00:00.000Z",
-    drawCRS: "510",
+    drawCRS: 510,
     drawSizeStr: "5100",
+    drawSizeNum: 5100,
+    drawDateFull: "2022-01-02",
   },
 ];
 
+/** @type {DistributionClean} */
 const MOCK_DISTRIBUTION = {
+  drawNumber: "1",
+  drawDate: "2022-01-01",
+  drawDistributionAsOn: "2022-01-01",
   dd1: 400,
   dd2: 450,
   dd3: 500,
+  dd4: 500,
+  dd5: 500,
+  dd6: 500,
+  dd7: 500,
+  dd8: 500,
   dd9: 550,
+  dd10: 600,
+  dd11: 600,
+  dd12: 600,
+  dd13: 600,
+  dd14: 600,
   dd15: 600,
   dd16: 650,
   dd17: 700,
-  drawDistributionAsOn: "2022-01-01",
   dd18: 10000,
 };
 
@@ -87,7 +106,7 @@ describe("lastRoundMessage", () => {
 
   test("includes the CRS score", () => {
     const message = lastRoundMessage(MOCK_ROUND);
-    expect(message).toContain(MOCK_ROUND.drawCRS);
+    expect(message).toContain(MOCK_ROUND.drawCRS.toString());
   });
 
   test("includes the draw size", () => {
@@ -111,8 +130,8 @@ describe("last50Message", () => {
     const message = last50Message(MOCK_ROUNDS);
     expect(message).toContain("|    Date    | Score | Program |");
     expect(message).toContain("|------------|-------|---------|");
-    expect(message).toContain("| 2022-01-02 | 510   | OTHER   |");
-    expect(message).toContain("| 2022-01-01 | 500   | OTHER   |");
+    expect(message).toContain("| 2022-01-02 |   510 | OTHER   |");
+    expect(message).toContain("| 2022-01-01 |   500 | OTHER   |");
   });
 });
 

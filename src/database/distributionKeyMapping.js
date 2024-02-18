@@ -1,4 +1,4 @@
-module.exports = {
+const mapping = /** @type {const} */ ({
   dd1: "601-1200",
   dd2: "501-600",
   dd3: "451-500",
@@ -17,4 +17,6 @@ module.exports = {
   dd16: "301-350",
   dd17: "0-300",
   dd18: "Total",
-};
+});
+
+module.exports = mapping;
