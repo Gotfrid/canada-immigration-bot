@@ -11,6 +11,7 @@ const {
   alreadySubscribedMessage,
   unsubscribedMessage,
   alreadyUnsubscribedMessage,
+  newRoundTitle,
 } = require("./messages");
 const bot = require("./botClient");
 const {
@@ -22,7 +23,8 @@ const {
   getLastDistribution,
   getAllSubscriberIds,
 } = require("../database/mongoFunctions");
-const { GROUP_CHAT_IDS } = require("../config");
+const { GROUP_CHAT_IDS, SCREENSHOT_PATH } = require("../config");
+const { downloadDashboardScreenshot } = require("../utils");
 
 /**
  * Handles `/start` command
@@ -83,7 +85,6 @@ const unsubscribeHandler = async (msg) => {
  */
 const lastHandler = async (msg) => {
   console.info("Received `last` command from", msg.chat.id);
-  // const crsDocument = await Round.find().sort({ drawDate: -1 }).limit(1).exec();
   const draw = await getLastDraw();
   if (draw === null) {
     return;
@@ -137,8 +138,10 @@ const aboutHandler = async (msg) => {
  */
 const dashboardHandler = async (msg) => {
   console.info("Received `dashboard` command from", msg.chat.id);
+  await bot.sendChatAction(msg.chat.id, "upload_photo");
+  await downloadDashboardScreenshot();
   const message = dashboardMessage();
-  await bot.sendMessage(msg.chat.id, message, { parse_mode: "HTML" });
+  await bot.sendPhoto(msg.chat.id, SCREENSHOT_PATH, { caption: message, parse_mode: "HTML" });
 };
 
 /**
@@ -150,8 +153,9 @@ const changeHandler = async (change) => {
   if (process.env.MODE === "test") return;
   if (change.operationType !== "insert") return;
 
-  const round = /** @type {RoundClean} */ (change.fullDocument);
-  const message = lastRoundMessage(round, true);
+  await downloadDashboardScreenshot();
+
+  const message = newRoundTitle();
   const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
@@ -160,9 +164,7 @@ const changeHandler = async (change) => {
     // Possible failures: user has stopped the bot
     // but the DB still conains their chatID
     try {
-      await bot.sendMessage(chatID, message, {
-        parse_mode: "HTML",
-      });
+      await bot.sendPhoto(chatID, SCREENSHOT_PATH, { caption: message, parse_mode: "HTML" });
       console.info("Message has been sent.");
     } catch (error) {
       console.error("Message could not be sent.");

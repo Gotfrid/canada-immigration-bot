@@ -25,6 +25,8 @@ const welcomeMessage = (userName = undefined) => {
   );
 };
 
+const newRoundTitle = () => "🎉 <strong>New round</strong>\n";
+
 /**
  * Generate a message with the information on the latest round of invitations.
  *
@@ -38,7 +40,7 @@ const welcomeMessage = (userName = undefined) => {
  */
 const lastRoundMessage = (round, includeTitle = false) => {
   return (
-    `${includeTitle ? "🎉 <strong>New round</strong>\n" : ""}` +
+    `${includeTitle ? newRoundTitle() : ""}` +
     `Draw: ${round.drawName}\n` +
     `Date of round: ${round.drawDateTime}\n` +
     `CRS score: <strong>${round.drawCRS}</strong>\n` +
@@ -167,6 +169,7 @@ const alreadyUnsubscribedMessage = () =>
 
 module.exports = {
   welcomeMessage,
+  newRoundTitle,
   lastRoundMessage,
   last50Message,
   distributionMessage,
