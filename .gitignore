@@ -107,3 +107,4 @@ dist
 deploy.zip
 aws/rounds.json
 .venv
+*.png

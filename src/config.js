@@ -17,6 +17,9 @@ const GROUP_CHAT_IDS = process.env.MODE ? [] : JSON.parse(process.env.GROUP_CHAT
 
 const DATA_URL = process.env.DATA_URL ?? "";
 
+const DASHBOARD_URL = "https://canadian-express.vercel.app";
+const SCREENSHOT_PATH = "canadian-express-puppeteer.png";
+
 module.exports = {
   ADMIN_CHAT_IDS,
   BOT_TOKEN,
@@ -24,4 +27,6 @@ module.exports = {
   MONGO_URI,
   MONGO_DB,
   DATA_URL,
+  DASHBOARD_URL,
+  SCREENSHOT_PATH,
 };
