@@ -55,7 +55,17 @@ Dashboard is deployed at [Vercel](https://vercel.com) free tier.
 
 #### Telegram bot
 
-This bot relies on a lambda fucntion that runs every 5 minutes and pushed new data (if any) to the MongoDB.
+Bot is running on a NodeJS server. Deployment is done manually via fly.io CLI tool:
+
+```shell
+flyctl deploy
+```
+
+You can check what's happenning in the logs:
+
+```shell
+flyctl logs
+```
 
 #### Database
 

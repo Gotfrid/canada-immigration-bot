@@ -16,8 +16,7 @@
     "dotenv": "^16.0.1",
     "mongodb": "^5.7.0",
     "node-fetch": "^3.3.0",
-    "node-telegram-bot-api": "^0.59.0",
-    "puppeteer": "^22.3.0"
+    "node-telegram-bot-api": "^0.59.0"
   },
   "devDependencies": {
     "@flydotio/dockerfile": "^0.3.3",
