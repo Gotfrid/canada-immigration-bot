@@ -23,7 +23,7 @@ const {
   getLastDistribution,
   getAllSubscriberIds,
 } = require("../database/mongoFunctions");
-const { GROUP_CHAT_IDS, SCREENSHOT_PATH } = require("../config");
+const { GROUP_CHAT_IDS, ADMIN_CHAT_IDS, SCREENSHOT_PATH } = require("../config");
 const { downloadDashboardScreenshot } = require("../utils");
 
 /**
@@ -154,21 +154,39 @@ const changeHandler = async (change) => {
   if (change.operationType !== "insert") return;
 
   await downloadDashboardScreenshot();
+  const round = /** @type {RoundClean} */ (change.fullDocument);
 
-  const message = newRoundTitle();
+  const groupMessage = newRoundTitle();
+  const simpleMessage = lastRoundMessage(round, true);
   const subscriberIds = await getAllSubscriberIds();
 
   // First, send message to the group(s) - they are the priority
-  for (const chatID of [...GROUP_CHAT_IDS, ...subscriberIds]) {
+  // message is special - with a screenshot
+  for (const chatID of [...GROUP_CHAT_IDS, ...ADMIN_CHAT_IDS]) {
     console.info("Sending notification to", chatID);
-    // Possible failures: user has stopped the bot
-    // but the DB still conains their chatID
     try {
-      await bot.sendPhoto(chatID, SCREENSHOT_PATH, { caption: message, parse_mode: "HTML" });
+      await bot.sendPhoto(chatID, SCREENSHOT_PATH, { caption: groupMessage, parse_mode: "HTML" });
       console.info("Message has been sent.");
     } catch (error) {
       console.error("Message could not be sent.");
     }
+
+    // https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this
+    await new Promise((r) => setTimeout(r, 60));
+  }
+
+  // Now send a simple message to all the subscibers
+  for (const chatID of subscriberIds) {
+    console.info("Sending notification to", chatID);
+    // Possible failures: user has stopped the bot
+    // but the DB still conains their chatID
+    try {
+      await bot.sendMessage(chatID, simpleMessage, { parse_mode: "HTML" });
+      console.info("Message has been sent.");
+    } catch (error) {
+      console.error("Message could not be sent.");
+    }
+    await new Promise((r) => setTimeout(r, 60));
   }
 };
 
