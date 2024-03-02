@@ -11,7 +11,6 @@ const {
   alreadySubscribedMessage,
   unsubscribedMessage,
   alreadyUnsubscribedMessage,
-  newRoundTitle,
 } = require("./messages");
 const bot = require("./botClient");
 const {
@@ -24,7 +23,6 @@ const {
   getAllSubscriberIds,
 } = require("../database/mongoFunctions");
 const { GROUP_CHAT_IDS, ADMIN_CHAT_IDS, SCREENSHOT_PATH } = require("../config");
-const { downloadDashboardScreenshot } = require("../utils");
 
 /**
  * Handles `/start` command
@@ -139,9 +137,8 @@ const aboutHandler = async (msg) => {
 const dashboardHandler = async (msg) => {
   console.info("Received `dashboard` command from", msg.chat.id);
   await bot.sendChatAction(msg.chat.id, "upload_photo");
-  await downloadDashboardScreenshot();
   const message = dashboardMessage();
-  await bot.sendPhoto(msg.chat.id, SCREENSHOT_PATH, { caption: message, parse_mode: "HTML" });
+  await bot.sendMessage(msg.chat.id, message);
 };
 
 /**
@@ -153,10 +150,8 @@ const changeHandler = async (change) => {
   if (process.env.MODE === "test") return;
   if (change.operationType !== "insert") return;
 
-  await downloadDashboardScreenshot();
   const round = /** @type {RoundClean} */ (change.fullDocument);
 
-  const groupMessage = newRoundTitle();
   const simpleMessage = lastRoundMessage(round, true);
   const subscriberIds = await getAllSubscriberIds();
 
@@ -165,7 +160,7 @@ const changeHandler = async (change) => {
   for (const chatID of [...GROUP_CHAT_IDS, ...ADMIN_CHAT_IDS]) {
     console.info("Sending notification to", chatID);
     try {
-      await bot.sendPhoto(chatID, SCREENSHOT_PATH, { caption: groupMessage, parse_mode: "HTML" });
+      await bot.sendMessage(chatID, simpleMessage, { parse_mode: "HTML" });
       console.info("Message has been sent.");
     } catch (error) {
       console.error("Message could not be sent.");
