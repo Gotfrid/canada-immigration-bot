@@ -108,3 +108,4 @@ deploy.zip
 aws/rounds.json
 .venv
 *.png
+playground.ipynb
