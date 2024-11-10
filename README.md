@@ -1,4 +1,4 @@
-# Express Entry Bot
+# Canada Immigration Bot
 
 ## Reference
 
