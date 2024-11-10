@@ -15,5 +15,5 @@ supabase link --project-ref
 ## Set telegram bot to serverless mode
 
 ```sh
-https://api.telegram.org/botREDACTED/setWebhook?url=https://REDACTED.supabase.co/functions/v1/telegram-bot?secret=REDACTED
+https://api.telegram.org/botBOT_TOKEN/setWebhook?url=https://PROJECT_RED.supabase.co/functions/v1/telegram-bot?secret=MY_SECRET
 ```
