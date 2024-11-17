@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 * * * *"
 
+env:
+  DATA_URL: ${{secrets.DATA_URL}}
+
 jobs:
   main:
     name: Main
