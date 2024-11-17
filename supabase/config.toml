@@ -3,7 +3,7 @@
 project_id = "canada-immigration-bot"
 
 [api]
-enabled = true
+enabled = false
 # Port to use for the API URL.
 port = 54321
 # Schemas to expose in your API. Tables, views and stored procedures in this schema will get API
@@ -41,21 +41,21 @@ max_client_conn = 100
 
 [db.seed]
 # If enabled, seeds the database after migrations during a db reset.
-enabled = true
+enabled = false
 # Specifies an ordered list of seed files to load during db reset.
 # Supports glob patterns relative to supabase directory. For example:
 # sql_paths = ['./seeds/*.sql', '../project-src/seeds/*-load-testing.sql']
 sql_paths = ['./seed.sql']
 
 [realtime]
-enabled = true
+enabled = false
 # Bind realtime via either IPv4 or IPv6. (default: IPv4)
 # ip_version = "IPv6"
 # The maximum length in bytes of HTTP request headers. (default: 4096)
 # max_header_length = 4096
 
 [studio]
-enabled = true
+enabled = false
 # Port to use for Supabase Studio.
 port = 54323
 # External URL of the API server that frontend connects to.
@@ -66,7 +66,7 @@ openai_api_key = "env(OPENAI_API_KEY)"
 # Email testing server. Emails sent with the local dev setup are not actually sent - rather, they
 # are monitored, and you can view the emails that would have been sent from the web interface.
 [inbucket]
-enabled = true
+enabled = false
 # Port to use for the email testing server web interface.
 port = 54324
 # Uncomment to expose additional ports for testing user applications that send emails.
@@ -74,12 +74,12 @@ port = 54324
 # pop3_port = 54326
 
 [storage]
-enabled = true
+enabled = false
 # The maximum file size allowed (e.g. "5MB", "500KB").
 file_size_limit = "50MiB"
 
 [storage.image_transformation]
-enabled = true
+enabled = false
 
 # Uncomment to configure local storage buckets
 # [storage.buckets.images]
@@ -89,7 +89,7 @@ enabled = true
 # objects_path = "./images"
 
 [auth]
-enabled = true
+enabled = false
 # The base URL of your website. Used as an allow-list for redirects and for constructing URLs used
 # in emails.
 site_url = "http://127.0.0.1:3000"
@@ -163,7 +163,7 @@ max_frequency = "5s"
 
 # This hook runs before a token is issued and allows you to add additional claims based on the authentication method used.
 # [auth.hook.custom_access_token]
-# enabled = true
+# enabled = false
 # uri = "pg-functions://<database>/<schema>/<hook_name>"
 
 # Configure one of the supported SMS providers: `twilio`, `twilio_verify`, `messagebird`, `textlocal`, `vonage`.
@@ -180,21 +180,21 @@ max_enrolled_factors = 10
 
 # Control use of MFA via App Authenticator (TOTP)
 [auth.mfa.totp]
-enroll_enabled = true
-verify_enabled = true
+enroll_enabled = false
+verify_enabled = false
 
 # Configure Multi-factor-authentication via Phone Messaging
 # [auth.mfa.phone]
-# enroll_enabled = true
-# verify_enabled = true
+# enroll_enabled = false
+# verify_enabled = false
 # otp_length = 6
 # template = "Your code is {{ .Code }} ."
 # max_frequency = "10s"
 
 # Configure Multi-factor-authentication via WebAuthn
 # [auth.mfa.web_authn]
-# enroll_enabled = true
-# verify_enabled = true
+# enroll_enabled = false
+# verify_enabled = false
 
 # Use an external OAuth provider. The full list of providers are: `apple`, `azure`, `bitbucket`,
 # `discord`, `facebook`, `github`, `gitlab`, `google`, `keycloak`, `linkedin_oidc`, `notion`, `twitch`,
@@ -237,7 +237,7 @@ policy = "oneshot"
 inspector_port = 8083
 
 [analytics]
-enabled = true
+enabled = false
 port = 54327
 # Configure one of the supported backends: `postgres`, `bigquery`.
 backend = "postgres"
