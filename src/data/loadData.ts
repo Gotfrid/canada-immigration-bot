@@ -1,27 +1,24 @@
-import { parse } from "jsr:@std/csv";
-import { testCleanRound, type RoundClean } from "./types.ts";
+import { isCleanRoundData, type RoundClean } from "./types.ts";
 
-export function loadData(path: string): RoundClean[] {
+export function loadData(basePath: string): RoundClean[] {
+  const path = basePath + "/data_all.json";
+
   // check if file exists
   try {
-    Deno.lstatSync(path)
+    Deno.lstatSync(path);
   } catch (error) {
     if (!(error instanceof Deno.errors.NotFound)) {
       throw error;
     }
-    return []
+    return [];
   }
 
-  const csv = Deno.readTextFileSync(path);
-  const columns = csv.split("\r\n")[0].split(",");
-  const data = parse(csv, {
-    columns,
-    skipFirstRow: true,
-  });
+  const json = Deno.readTextFileSync(path);
+  const data = JSON.parse(json);
 
-  if (!testCleanRound(data)) {
+  if (!isCleanRoundData(data)) {
     throw new Error("Invalid data");
   }
-  
+
   return data;
 }

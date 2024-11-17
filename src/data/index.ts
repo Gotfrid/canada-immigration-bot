@@ -1,3 +1,1 @@
-import { updateData } from "./updateData.ts";
-
-await updateData();
+export { updateData } from "./updateData.ts";

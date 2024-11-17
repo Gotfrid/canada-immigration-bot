@@ -121,9 +121,27 @@ export type RoundClean =
     drawCRS: number;
   };
 
-export function testCleanRound(arr: unknown): arr is RoundClean[] {
-  if (arr === null || arr === undefined || !Array.isArray(arr)) {
-    return false
+export function isRawRoundData(data: unknown): data is RoundResponse {
+  if (data === null || data === undefined || typeof data !== "object") {
+    return false;
+  }
+
+  if (!("rounds" in data)) {
+    return false;
+  }
+
+  return true;
+}
+
+export function isCleanRoundData(arr: unknown): arr is RoundClean[] {
+  if (arr === null || arr === undefined) {
+    console.error("arr is null or undefined");
+    return false;
+  }
+
+  if (!Array.isArray(arr)) {
+    console.error("arr is not an array");
+    return false;
   }
 
   const round = arr[0] as RoundClean;
@@ -135,9 +153,10 @@ export function testCleanRound(arr: unknown): arr is RoundClean[] {
     typeof round.drawDateTime !== "string" ||
     typeof round.drawName !== "string" ||
     typeof round.drawSizeStr !== "string" ||
-    typeof round.drawSizeNum !== "string" ||
-    typeof round.drawCRS !== "string"
+    typeof round.drawSizeNum !== "number" ||
+    typeof round.drawCRS !== "number"
   ) {
+    console.error("round properties are missing or wrong type");
     return false;
   }
 

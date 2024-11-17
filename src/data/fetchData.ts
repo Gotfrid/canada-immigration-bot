@@ -1,4 +1,4 @@
-import type { RoundClean, RoundResponse } from "./types.ts";
+import { isCleanRoundData, isRawRoundData, type RoundClean } from "./types.ts";
 import { extractRoundData } from "./utils.ts";
 
 export async function fetchData(): Promise<RoundClean[]> {
@@ -9,8 +9,17 @@ export async function fetchData(): Promise<RoundClean[]> {
   }
 
   const response = await fetch(url);
-  const data: RoundResponse = await response.json();
-  
+  const data: unknown = await response.json();
+
+  if (!isRawRoundData(data)) {
+    throw new Error("Invalid raw data shape");
+  }
+
   const rounds = data.rounds.map(extractRoundData);
+
+  if (!isCleanRoundData(rounds)) {
+    throw new Error("Invalid parsed data shape");
+  }
+
   return rounds;
 }
