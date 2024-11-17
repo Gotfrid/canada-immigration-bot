@@ -28,7 +28,6 @@ jobs:
         run: deno run -A github_action.ts
 
       - name: Commit changes
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git status --short | grep -q "M" && git add . && git commit -m "Update data" && git push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Scheduled data update"
