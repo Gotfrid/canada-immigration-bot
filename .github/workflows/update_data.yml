@@ -6,6 +6,7 @@ on:
     - cron: "0 * * * *"
 
 env:
+  GITHUB_PAT: ${{secrets.PAT}}
   DATA_URL: ${{secrets.DATA_URL}}
 
 permissions:
