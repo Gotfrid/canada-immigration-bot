@@ -1,4 +1,5 @@
 name: UpdateData
+
 on:
   workflow_dispatch:
   schedule:
@@ -6,6 +7,9 @@ on:
 
 env:
   DATA_URL: ${{secrets.DATA_URL}}
+
+permissions:
+  contents: write
 
 jobs:
   main:
