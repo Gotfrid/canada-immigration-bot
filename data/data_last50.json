@@ -1,502 +1,502 @@
 [
-  {
-    "drawNumber": "275",
-    "drawDate": "2023-12-18",
-    "drawDateFull": "December 18, 2023",
-    "drawDateTime": "December 18, 2023 at 16:12:22 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,325",
-    "drawSizeNum": 1325,
-    "drawCRS": 542
-  },
-  {
-    "drawNumber": "276",
-    "drawDate": "2023-12-19",
-    "drawDateFull": "December 19, 2023",
-    "drawDateTime": "December 19, 2023 at 14:44:00 UTC",
-    "drawName": "Trade occupations (Version 1)",
-    "drawSizeStr": "1,000",
-    "drawSizeNum": 1000,
-    "drawCRS": 425
-  },
-  {
-    "drawNumber": "277",
-    "drawDate": "2023-12-20",
-    "drawDateFull": "December 20, 2023",
-    "drawDateTime": "December 20, 2023 at 15:55:23 UTC",
-    "drawName": "Transport occupations (Version 1)",
-    "drawSizeStr": "670",
-    "drawSizeNum": 670,
-    "drawCRS": 435
-  },
-  {
-    "drawNumber": "278",
-    "drawDate": "2023-12-21",
-    "drawDateFull": "December 21, 2023",
-    "drawDateTime": "December 21, 2023 at 14:15:42 UTC",
-    "drawName": "Agriculture and agri-food occupations (Version 1)",
-    "drawSizeStr": "400",
-    "drawSizeNum": 400,
-    "drawCRS": 386
-  },
-  {
-    "drawNumber": "279",
-    "drawDate": "2024-01-10",
-    "drawDateFull": "January 10, 2024",
-    "drawDateTime": "January 10, 2024 at 16:59:13 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,510",
-    "drawSizeNum": 1510,
-    "drawCRS": 546
-  },
-  {
-    "drawNumber": "280",
-    "drawDate": "2024-01-23",
-    "drawDateFull": "January 23, 2024",
-    "drawDateTime": "January 23, 2024 at 16:08:03 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,040",
-    "drawSizeNum": 1040,
-    "drawCRS": 543
-  },
-  {
-    "drawNumber": "281",
-    "drawDate": "2024-01-31",
-    "drawDateFull": "January 31, 2024",
-    "drawDateTime": "January 31, 2024 at 15:18:02 UTC",
-    "drawName": "General",
-    "drawSizeStr": "730",
-    "drawSizeNum": 730,
-    "drawCRS": 541
-  },
-  {
-    "drawNumber": "282",
-    "drawDate": "2024-02-01",
-    "drawDateFull": "February 1, 2024",
-    "drawDateTime": "February 01, 2024 at 16:36:01 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "7,000",
-    "drawSizeNum": 7000,
-    "drawCRS": 365
-  },
-  {
-    "drawNumber": "283",
-    "drawDate": "2024-02-13",
-    "drawDateFull": "February 13, 2024",
-    "drawDateTime": "February 13, 2024 at 14:18:53 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,490",
-    "drawSizeNum": 1490,
-    "drawCRS": 535
-  },
-  {
-    "drawNumber": "284",
-    "drawDate": "2024-02-14",
-    "drawDateFull": "February 14, 2024",
-    "drawDateTime": "February 14, 2024 at 15:50:22 UTC",
-    "drawName": "Healthcare occupations (Version 1)",
-    "drawSizeStr": "3,500",
-    "drawSizeNum": 3500,
-    "drawCRS": 422
-  },
-  {
-    "drawNumber": "285",
-    "drawDate": "2024-02-16",
-    "drawDateFull": "February 16, 2024",
-    "drawDateTime": "February 16, 2024 at 15:18:05 UTC",
-    "drawName": "Agriculture and agri-food occupations (Version 1)",
-    "drawSizeStr": "150",
-    "drawSizeNum": 150,
-    "drawCRS": 437
-  },
-  {
-    "drawNumber": "286",
-    "drawDate": "2024-02-28",
-    "drawDateFull": "February 28, 2024",
-    "drawDateTime": "February 28, 2024 at 14:57:26 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,470",
-    "drawSizeNum": 1470,
-    "drawCRS": 534
-  },
-  {
-    "drawNumber": "287",
-    "drawDate": "2024-02-29",
-    "drawDateFull": "February 29, 2024",
-    "drawDateTime": "February 29, 2024 at 15:58:53 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "2,500",
-    "drawSizeNum": 2500,
-    "drawCRS": 336
-  },
-  {
-    "drawNumber": "288",
-    "drawDate": "2024-03-12",
-    "drawDateFull": "March 12, 2024",
-    "drawDateTime": "March 12, 2024 at 14:57:26 UTC",
-    "drawName": "General",
-    "drawSizeStr": "2,850",
-    "drawSizeNum": 2850,
-    "drawCRS": 525
-  },
-  {
-    "drawNumber": "289",
-    "drawDate": "2024-03-13",
-    "drawDateFull": "March 13, 2024",
-    "drawDateTime": "March 13, 2024 at 16:16:01 UTC",
-    "drawName": "Transport occupations (Version 1)",
-    "drawSizeStr": "975",
-    "drawSizeNum": 975,
-    "drawCRS": 430
-  },
-  {
-    "drawNumber": "290",
-    "drawDate": "2024-03-25",
-    "drawDateFull": "March 25, 2024",
-    "drawDateTime": "March 25, 2024 at 17:45:49 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,980",
-    "drawSizeNum": 1980,
-    "drawCRS": 524
-  },
-  {
-    "drawNumber": "291",
-    "drawDate": "2024-03-26",
-    "drawDateFull": "March 26, 2024",
-    "drawDateTime": "March 26, 2024 at 15:59:36 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "1,500",
-    "drawSizeNum": 1500,
-    "drawCRS": 388
-  },
-  {
-    "drawNumber": "292",
-    "drawDate": "2024-04-10",
-    "drawDateFull": "April 10, 2024",
-    "drawDateTime": "April 10, 2024 at 13:11:33 UTC",
-    "drawName": "General",
-    "drawSizeStr": "1,280",
-    "drawSizeNum": 1280,
-    "drawCRS": 549
-  },
-  {
-    "drawNumber": "293",
-    "drawDate": "2024-04-11",
-    "drawDateFull": "April 11, 2024",
-    "drawDateTime": "April 11, 2024 at 13:23:42 UTC",
-    "drawName": "STEM occupations (Version 1)",
-    "drawSizeStr": "4,500",
-    "drawSizeNum": 4500,
-    "drawCRS": 491
-  },
-  {
-    "drawNumber": "294",
-    "drawDate": "2024-04-23",
-    "drawDateFull": "April 23, 2024",
-    "drawDateTime": "April 23, 2024 at 16:54:59 UTC",
-    "drawName": "General",
-    "drawSizeStr": "2,095",
-    "drawSizeNum": 2095,
-    "drawCRS": 529
-  },
-  {
-    "drawNumber": "295",
-    "drawDate": "2024-04-24",
-    "drawDateFull": "April 24, 2024",
-    "drawDateTime": "April 24, 2024 at 14:10:42 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "1,400",
-    "drawSizeNum": 1400,
-    "drawCRS": 410
-  },
-  {
-    "drawNumber": "296",
-    "drawDate": "2024-05-30",
-    "drawDateFull": "May 30, 2024",
-    "drawDateTime": "May 30, 2024 at 14:59:31 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "2,985",
-    "drawSizeNum": 2985,
-    "drawCRS": 676
-  },
-  {
-    "drawNumber": "297",
-    "drawDate": "2024-05-31",
-    "drawDateFull": "May 31, 2024",
-    "drawDateTime": "May 31, 2024 at12:48:30 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "3,000",
-    "drawSizeNum": 3000,
-    "drawCRS": 522
-  },
-  {
-    "drawNumber": "298",
-    "drawDate": "2024-06-19",
-    "drawDateFull": "June 19, 2024",
-    "drawDateTime": "June 19, 2024 at 14:37:26 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "1,499",
-    "drawSizeNum": 1499,
-    "drawCRS": 663
-  },
-  {
-    "drawNumber": "299",
-    "drawDate": "2024-07-02",
-    "drawDateFull": "July 2, 2024",
-    "drawDateTime": "July 2, 2024 at 15:12:05 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "920",
-    "drawSizeNum": 920,
-    "drawCRS": 739
-  },
-  {
-    "drawNumber": "300",
-    "drawDate": "2024-07-04",
-    "drawDateFull": "July 4, 2024",
-    "drawDateTime": "July 4, 2024 at 13:30:48 UTC",
-    "drawName": "Trade occupations (Version 1)",
-    "drawSizeStr": "1,800",
-    "drawSizeNum": 1800,
-    "drawCRS": 436
-  },
-  {
-    "drawNumber": "301",
-    "drawDate": "2024-07-05",
-    "drawDateFull": "July 5, 2024",
-    "drawDateTime": "July 05, 2024 at 16:03:12 UTC",
-    "drawName": "Healthcare occupations (Version 1)",
-    "drawSizeStr": "3,750",
-    "drawSizeNum": 3750,
-    "drawCRS": 445
-  },
-  {
-    "drawNumber": "302",
-    "drawDate": "2024-07-08",
-    "drawDateFull": "July 8, 2024",
-    "drawDateTime": "July 08, 2024 at 14:01:33 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "3,200",
-    "drawSizeNum": 3200,
-    "drawCRS": 420
-  },
-  {
-    "drawNumber": "303",
-    "drawDate": "2024-07-16",
-    "drawDateFull": "July 16, 2024",
-    "drawDateTime": "July 16, 2024 at 15:39:40 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "1,391",
-    "drawSizeNum": 1391,
-    "drawCRS": 670
-  },
-  {
-    "drawNumber": "304",
-    "drawDate": "2024-07-17",
-    "drawDateFull": "July 17, 2024",
-    "drawDateTime": "July 17, 2024 at 16:17:31 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "6,300",
-    "drawSizeNum": 6300,
-    "drawCRS": 515
-  },
-  {
-    "drawNumber": "305",
-    "drawDate": "2024-07-18",
-    "drawDateFull": "July 18, 2024",
-    "drawDateTime": "July 18, 2024 at 14:58:28 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "1,800",
-    "drawSizeNum": 1800,
-    "drawCRS": 400
-  },
-  {
-    "drawNumber": "306",
-    "drawDate": "2024-07-30",
-    "drawDateFull": "July 30, 2024",
-    "drawDateTime": "July 30, 2024 at 15:25:21 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "964",
-    "drawSizeNum": 964,
-    "drawCRS": 686
-  },
-  {
-    "drawNumber": "307",
-    "drawDate": "2024-07-31",
-    "drawDateFull": "July 31, 2024",
-    "drawDateTime": "July 31, 2024 at 14:48:13 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "5,000",
-    "drawSizeNum": 5000,
-    "drawCRS": 510
-  },
-  {
-    "drawNumber": "308",
-    "drawDate": "2024-08-13",
-    "drawDateFull": "August 13, 2024",
-    "drawDateTime": "August 13, 2024 at 14:57:21 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "763",
-    "drawSizeNum": 763,
-    "drawCRS": 690
-  },
-  {
-    "drawNumber": "309",
-    "drawDate": "2024-08-14",
-    "drawDateFull": "August 14, 2024",
-    "drawDateTime": "August 14, 2024 at 14:04:45 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "3,200",
-    "drawSizeNum": 3200,
-    "drawCRS": 509
-  },
-  {
-    "drawNumber": "310",
-    "drawDate": "2024-08-15",
-    "drawDateFull": "August 15, 2024",
-    "drawDateTime": "August 15, 2024 at 2024-08-15 15:11:54 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "2,000",
-    "drawSizeNum": 2000,
-    "drawCRS": 394
-  },
-  {
-    "drawNumber": "311",
-    "drawDate": "2024-08-26",
-    "drawDateFull": "August 26, 2024",
-    "drawDateTime": "August 26, 2024 at 14:46:49 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "1,121",
-    "drawSizeNum": 1121,
-    "drawCRS": 694
-  },
-  {
-    "drawNumber": "312",
-    "drawDate": "2024-08-27",
-    "drawDateFull": "August 27, 2024",
-    "drawDateTime": "August 27, 2024 at 17:44:02 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "3,300",
-    "drawSizeNum": 3300,
-    "drawCRS": 507
-  },
-  {
-    "drawNumber": "313",
-    "drawDate": "2024-09-09",
-    "drawDateFull": "September 9, 2024",
-    "drawDateTime": "September 09, 2024 at 15:42:40 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "911",
-    "drawSizeNum": 911,
-    "drawCRS": 732
-  },
-  {
-    "drawNumber": "314",
-    "drawDate": "2024-09-13",
-    "drawDateFull": "September 13, 2024",
-    "drawDateTime": "September 13, 2024 at 13:38:58 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "1,000",
-    "drawSizeNum": 1000,
-    "drawCRS": 446
-  },
-  {
-    "drawNumber": "315",
-    "drawDate": "2024-09-19",
-    "drawDateFull": "September 19, 2024",
-    "drawDateTime": "September 19, 2024 at 13:12:22 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "4,000",
-    "drawSizeNum": 4000,
-    "drawCRS": 509
-  },
-  {
-    "drawNumber": "316",
-    "drawDate": "2024-10-07",
-    "drawDateFull": "October 7, 2024",
-    "drawDateTime": "October 7, 2024 at 15:02:50 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "1,613",
-    "drawSizeNum": 1613,
-    "drawCRS": 743
-  },
-  {
-    "drawNumber": "317",
-    "drawDate": "2024-10-09",
-    "drawDateFull": "October 9, 2024",
-    "drawDateTime": "October 09, 2024 at 14:22:23 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "500",
-    "drawSizeNum": 500,
-    "drawCRS": 539
-  },
-  {
-    "drawNumber": "318",
-    "drawDate": "2024-10-10",
-    "drawDateFull": "October 10, 2024",
-    "drawDateTime": "October 10, 2024 at 15:45:35 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "1,000",
-    "drawSizeNum": 1000,
-    "drawCRS": 444
-  },
-  {
-    "drawNumber": "319",
-    "drawDate": "2024-10-21",
-    "drawDateFull": "October 21, 2024",
-    "drawDateTime": "October 21, 2024 at 15:12:14 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "648",
-    "drawSizeNum": 648,
-    "drawCRS": 791
-  },
-  {
-    "drawNumber": "320",
-    "drawDate": "2024-10-22",
-    "drawDateFull": "October 22, 2024",
-    "drawDateTime": "October 22, 2024 at 14:07:18 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "400",
-    "drawSizeNum": 400,
-    "drawCRS": 539
-  },
-  {
-    "drawNumber": "321",
-    "drawDate": "2024-10-23",
-    "drawDateFull": "October 23, 2024",
-    "drawDateTime": "October 23, 2024 at 14:48:28 UTC",
-    "drawName": "Trade occupations (Version 1)",
-    "drawSizeStr": "1,800",
-    "drawSizeNum": 1800,
-    "drawCRS": 433
-  },
-  {
-    "drawNumber": "322",
-    "drawDate": "2024-11-12",
-    "drawDateFull": "November 12, 2024",
-    "drawDateTime": "November 12, 2024 at 16:12:30 UTC",
-    "drawName": "Provincial Nominee Program",
-    "drawSizeStr": "733",
-    "drawSizeNum": 733,
-    "drawCRS": 812
-  },
-  {
-    "drawNumber": "323",
-    "drawDate": "2024-11-13",
-    "drawDateFull": "November 13, 2024",
-    "drawDateTime": "November 13, 2024 at 15:58:05 UTC",
-    "drawName": "Canadian Experience Class",
-    "drawSizeStr": "400",
-    "drawSizeNum": 400,
-    "drawCRS": 547
-  },
-  {
-    "drawNumber": "324",
-    "drawDate": "2024-11-15",
-    "drawDateFull": "November 15, 2024",
-    "drawDateTime": "November 15, 2024 at 13:37:27 UTC",
-    "drawName": "French language proficiency (Version 1)",
-    "drawSizeStr": "800",
-    "drawSizeNum": 800,
-    "drawCRS": 478
-  }
+    {
+        "drawNumber": "276",
+        "drawDate": "2023-12-19",
+        "drawDateFull": "December 19, 2023",
+        "drawDateTime": "December 19, 2023 at 14:44:00 UTC",
+        "drawName": "Trade occupations (Version 1)",
+        "drawSizeStr": "1,000",
+        "drawSizeNum": 1000,
+        "drawCRS": 425
+    },
+    {
+        "drawNumber": "277",
+        "drawDate": "2023-12-20",
+        "drawDateFull": "December 20, 2023",
+        "drawDateTime": "December 20, 2023 at 15:55:23 UTC",
+        "drawName": "Transport occupations (Version 1)",
+        "drawSizeStr": "670",
+        "drawSizeNum": 670,
+        "drawCRS": 435
+    },
+    {
+        "drawNumber": "278",
+        "drawDate": "2023-12-21",
+        "drawDateFull": "December 21, 2023",
+        "drawDateTime": "December 21, 2023 at 14:15:42 UTC",
+        "drawName": "Agriculture and agri-food occupations (Version 1)",
+        "drawSizeStr": "400",
+        "drawSizeNum": 400,
+        "drawCRS": 386
+    },
+    {
+        "drawNumber": "279",
+        "drawDate": "2024-01-10",
+        "drawDateFull": "January 10, 2024",
+        "drawDateTime": "January 10, 2024 at 16:59:13 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,510",
+        "drawSizeNum": 1510,
+        "drawCRS": 546
+    },
+    {
+        "drawNumber": "280",
+        "drawDate": "2024-01-23",
+        "drawDateFull": "January 23, 2024",
+        "drawDateTime": "January 23, 2024 at 16:08:03 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,040",
+        "drawSizeNum": 1040,
+        "drawCRS": 543
+    },
+    {
+        "drawNumber": "281",
+        "drawDate": "2024-01-31",
+        "drawDateFull": "January 31, 2024",
+        "drawDateTime": "January 31, 2024 at 15:18:02 UTC",
+        "drawName": "General",
+        "drawSizeStr": "730",
+        "drawSizeNum": 730,
+        "drawCRS": 541
+    },
+    {
+        "drawNumber": "282",
+        "drawDate": "2024-02-01",
+        "drawDateFull": "February 1, 2024",
+        "drawDateTime": "February 01, 2024 at 16:36:01 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "7,000",
+        "drawSizeNum": 7000,
+        "drawCRS": 365
+    },
+    {
+        "drawNumber": "283",
+        "drawDate": "2024-02-13",
+        "drawDateFull": "February 13, 2024",
+        "drawDateTime": "February 13, 2024 at 14:18:53 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,490",
+        "drawSizeNum": 1490,
+        "drawCRS": 535
+    },
+    {
+        "drawNumber": "284",
+        "drawDate": "2024-02-14",
+        "drawDateFull": "February 14, 2024",
+        "drawDateTime": "February 14, 2024 at 15:50:22 UTC",
+        "drawName": "Healthcare occupations (Version 1)",
+        "drawSizeStr": "3,500",
+        "drawSizeNum": 3500,
+        "drawCRS": 422
+    },
+    {
+        "drawNumber": "285",
+        "drawDate": "2024-02-16",
+        "drawDateFull": "February 16, 2024",
+        "drawDateTime": "February 16, 2024 at 15:18:05 UTC",
+        "drawName": "Agriculture and agri-food occupations (Version 1)",
+        "drawSizeStr": "150",
+        "drawSizeNum": 150,
+        "drawCRS": 437
+    },
+    {
+        "drawNumber": "286",
+        "drawDate": "2024-02-28",
+        "drawDateFull": "February 28, 2024",
+        "drawDateTime": "February 28, 2024 at 14:57:26 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,470",
+        "drawSizeNum": 1470,
+        "drawCRS": 534
+    },
+    {
+        "drawNumber": "287",
+        "drawDate": "2024-02-29",
+        "drawDateFull": "February 29, 2024",
+        "drawDateTime": "February 29, 2024 at 15:58:53 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "2,500",
+        "drawSizeNum": 2500,
+        "drawCRS": 336
+    },
+    {
+        "drawNumber": "288",
+        "drawDate": "2024-03-12",
+        "drawDateFull": "March 12, 2024",
+        "drawDateTime": "March 12, 2024 at 14:57:26 UTC",
+        "drawName": "General",
+        "drawSizeStr": "2,850",
+        "drawSizeNum": 2850,
+        "drawCRS": 525
+    },
+    {
+        "drawNumber": "289",
+        "drawDate": "2024-03-13",
+        "drawDateFull": "March 13, 2024",
+        "drawDateTime": "March 13, 2024 at 16:16:01 UTC",
+        "drawName": "Transport occupations (Version 1)",
+        "drawSizeStr": "975",
+        "drawSizeNum": 975,
+        "drawCRS": 430
+    },
+    {
+        "drawNumber": "290",
+        "drawDate": "2024-03-25",
+        "drawDateFull": "March 25, 2024",
+        "drawDateTime": "March 25, 2024 at 17:45:49 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,980",
+        "drawSizeNum": 1980,
+        "drawCRS": 524
+    },
+    {
+        "drawNumber": "291",
+        "drawDate": "2024-03-26",
+        "drawDateFull": "March 26, 2024",
+        "drawDateTime": "March 26, 2024 at 15:59:36 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "1,500",
+        "drawSizeNum": 1500,
+        "drawCRS": 388
+    },
+    {
+        "drawNumber": "292",
+        "drawDate": "2024-04-10",
+        "drawDateFull": "April 10, 2024",
+        "drawDateTime": "April 10, 2024 at 13:11:33 UTC",
+        "drawName": "General",
+        "drawSizeStr": "1,280",
+        "drawSizeNum": 1280,
+        "drawCRS": 549
+    },
+    {
+        "drawNumber": "293",
+        "drawDate": "2024-04-11",
+        "drawDateFull": "April 11, 2024",
+        "drawDateTime": "April 11, 2024 at 13:23:42 UTC",
+        "drawName": "STEM occupations (Version 1)",
+        "drawSizeStr": "4,500",
+        "drawSizeNum": 4500,
+        "drawCRS": 491
+    },
+    {
+        "drawNumber": "294",
+        "drawDate": "2024-04-23",
+        "drawDateFull": "April 23, 2024",
+        "drawDateTime": "April 23, 2024 at 16:54:59 UTC",
+        "drawName": "General",
+        "drawSizeStr": "2,095",
+        "drawSizeNum": 2095,
+        "drawCRS": 529
+    },
+    {
+        "drawNumber": "295",
+        "drawDate": "2024-04-24",
+        "drawDateFull": "April 24, 2024",
+        "drawDateTime": "April 24, 2024 at 14:10:42 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "1,400",
+        "drawSizeNum": 1400,
+        "drawCRS": 410
+    },
+    {
+        "drawNumber": "296",
+        "drawDate": "2024-05-30",
+        "drawDateFull": "May 30, 2024",
+        "drawDateTime": "May 30, 2024 at 14:59:31 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "2,985",
+        "drawSizeNum": 2985,
+        "drawCRS": 676
+    },
+    {
+        "drawNumber": "297",
+        "drawDate": "2024-05-31",
+        "drawDateFull": "May 31, 2024",
+        "drawDateTime": "May 31, 2024 at12:48:30 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "3,000",
+        "drawSizeNum": 3000,
+        "drawCRS": 522
+    },
+    {
+        "drawNumber": "298",
+        "drawDate": "2024-06-19",
+        "drawDateFull": "June 19, 2024",
+        "drawDateTime": "June 19, 2024 at 14:37:26 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "1,499",
+        "drawSizeNum": 1499,
+        "drawCRS": 663
+    },
+    {
+        "drawNumber": "299",
+        "drawDate": "2024-07-02",
+        "drawDateFull": "July 2, 2024",
+        "drawDateTime": "July 2, 2024 at 15:12:05 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "920",
+        "drawSizeNum": 920,
+        "drawCRS": 739
+    },
+    {
+        "drawNumber": "300",
+        "drawDate": "2024-07-04",
+        "drawDateFull": "July 4, 2024",
+        "drawDateTime": "July 4, 2024 at 13:30:48 UTC",
+        "drawName": "Trade occupations (Version 1)",
+        "drawSizeStr": "1,800",
+        "drawSizeNum": 1800,
+        "drawCRS": 436
+    },
+    {
+        "drawNumber": "301",
+        "drawDate": "2024-07-05",
+        "drawDateFull": "July 5, 2024",
+        "drawDateTime": "July 05, 2024 at 16:03:12 UTC",
+        "drawName": "Healthcare occupations (Version 1)",
+        "drawSizeStr": "3,750",
+        "drawSizeNum": 3750,
+        "drawCRS": 445
+    },
+    {
+        "drawNumber": "302",
+        "drawDate": "2024-07-08",
+        "drawDateFull": "July 8, 2024",
+        "drawDateTime": "July 08, 2024 at 14:01:33 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "3,200",
+        "drawSizeNum": 3200,
+        "drawCRS": 420
+    },
+    {
+        "drawNumber": "303",
+        "drawDate": "2024-07-16",
+        "drawDateFull": "July 16, 2024",
+        "drawDateTime": "July 16, 2024 at 15:39:40 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "1,391",
+        "drawSizeNum": 1391,
+        "drawCRS": 670
+    },
+    {
+        "drawNumber": "304",
+        "drawDate": "2024-07-17",
+        "drawDateFull": "July 17, 2024",
+        "drawDateTime": "July 17, 2024 at 16:17:31 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "6,300",
+        "drawSizeNum": 6300,
+        "drawCRS": 515
+    },
+    {
+        "drawNumber": "305",
+        "drawDate": "2024-07-18",
+        "drawDateFull": "July 18, 2024",
+        "drawDateTime": "July 18, 2024 at 14:58:28 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "1,800",
+        "drawSizeNum": 1800,
+        "drawCRS": 400
+    },
+    {
+        "drawNumber": "306",
+        "drawDate": "2024-07-30",
+        "drawDateFull": "July 30, 2024",
+        "drawDateTime": "July 30, 2024 at 15:25:21 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "964",
+        "drawSizeNum": 964,
+        "drawCRS": 686
+    },
+    {
+        "drawNumber": "307",
+        "drawDate": "2024-07-31",
+        "drawDateFull": "July 31, 2024",
+        "drawDateTime": "July 31, 2024 at 14:48:13 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "5,000",
+        "drawSizeNum": 5000,
+        "drawCRS": 510
+    },
+    {
+        "drawNumber": "308",
+        "drawDate": "2024-08-13",
+        "drawDateFull": "August 13, 2024",
+        "drawDateTime": "August 13, 2024 at 14:57:21 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "763",
+        "drawSizeNum": 763,
+        "drawCRS": 690
+    },
+    {
+        "drawNumber": "309",
+        "drawDate": "2024-08-14",
+        "drawDateFull": "August 14, 2024",
+        "drawDateTime": "August 14, 2024 at 14:04:45 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "3,200",
+        "drawSizeNum": 3200,
+        "drawCRS": 509
+    },
+    {
+        "drawNumber": "310",
+        "drawDate": "2024-08-15",
+        "drawDateFull": "August 15, 2024",
+        "drawDateTime": "August 15, 2024 at 2024-08-15 15:11:54 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "2,000",
+        "drawSizeNum": 2000,
+        "drawCRS": 394
+    },
+    {
+        "drawNumber": "311",
+        "drawDate": "2024-08-26",
+        "drawDateFull": "August 26, 2024",
+        "drawDateTime": "August 26, 2024 at 14:46:49 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "1,121",
+        "drawSizeNum": 1121,
+        "drawCRS": 694
+    },
+    {
+        "drawNumber": "312",
+        "drawDate": "2024-08-27",
+        "drawDateFull": "August 27, 2024",
+        "drawDateTime": "August 27, 2024 at 17:44:02 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "3,300",
+        "drawSizeNum": 3300,
+        "drawCRS": 507
+    },
+    {
+        "drawNumber": "313",
+        "drawDate": "2024-09-09",
+        "drawDateFull": "September 9, 2024",
+        "drawDateTime": "September 09, 2024 at 15:42:40 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "911",
+        "drawSizeNum": 911,
+        "drawCRS": 732
+    },
+    {
+        "drawNumber": "314",
+        "drawDate": "2024-09-13",
+        "drawDateFull": "September 13, 2024",
+        "drawDateTime": "September 13, 2024 at 13:38:58 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "1,000",
+        "drawSizeNum": 1000,
+        "drawCRS": 446
+    },
+    {
+        "drawNumber": "315",
+        "drawDate": "2024-09-19",
+        "drawDateFull": "September 19, 2024",
+        "drawDateTime": "September 19, 2024 at 13:12:22 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "4,000",
+        "drawSizeNum": 4000,
+        "drawCRS": 509
+    },
+    {
+        "drawNumber": "316",
+        "drawDate": "2024-10-07",
+        "drawDateFull": "October 7, 2024",
+        "drawDateTime": "October 7, 2024 at 15:02:50 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "1,613",
+        "drawSizeNum": 1613,
+        "drawCRS": 743
+    },
+    {
+        "drawNumber": "317",
+        "drawDate": "2024-10-09",
+        "drawDateFull": "October 9, 2024",
+        "drawDateTime": "October 09, 2024 at 14:22:23 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "500",
+        "drawSizeNum": 500,
+        "drawCRS": 539
+    },
+    {
+        "drawNumber": "318",
+        "drawDate": "2024-10-10",
+        "drawDateFull": "October 10, 2024",
+        "drawDateTime": "October 10, 2024 at 15:45:35 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "1,000",
+        "drawSizeNum": 1000,
+        "drawCRS": 444
+    },
+    {
+        "drawNumber": "319",
+        "drawDate": "2024-10-21",
+        "drawDateFull": "October 21, 2024",
+        "drawDateTime": "October 21, 2024 at 15:12:14 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "648",
+        "drawSizeNum": 648,
+        "drawCRS": 791
+    },
+    {
+        "drawNumber": "320",
+        "drawDate": "2024-10-22",
+        "drawDateFull": "October 22, 2024",
+        "drawDateTime": "October 22, 2024 at 14:07:18 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "400",
+        "drawSizeNum": 400,
+        "drawCRS": 539
+    },
+    {
+        "drawNumber": "321",
+        "drawDate": "2024-10-23",
+        "drawDateFull": "October 23, 2024",
+        "drawDateTime": "October 23, 2024 at 14:48:28 UTC",
+        "drawName": "Trade occupations (Version 1)",
+        "drawSizeStr": "1,800",
+        "drawSizeNum": 1800,
+        "drawCRS": 433
+    },
+    {
+        "drawNumber": "322",
+        "drawDate": "2024-11-12",
+        "drawDateFull": "November 12, 2024",
+        "drawDateTime": "November 12, 2024 at 16:12:30 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "733",
+        "drawSizeNum": 733,
+        "drawCRS": 812
+    },
+    {
+        "drawNumber": "323",
+        "drawDate": "2024-11-13",
+        "drawDateFull": "November 13, 2024",
+        "drawDateTime": "November 13, 2024 at 15:58:05 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "400",
+        "drawSizeNum": 400,
+        "drawCRS": 547
+    },
+    {
+        "drawNumber": "324",
+        "drawDate": "2024-11-15",
+        "drawDateFull": "November 15, 2024",
+        "drawDateTime": "November 15, 2024 at 13:37:27 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "800",
+        "drawSizeNum": 800,
+        "drawCRS": 478
+    },
+    {
+        "drawNumber": "325",
+        "drawDate": "2024-11-18",
+        "drawDateFull": "November 18, 2024",
+        "drawDateTime": "November 18, 2024 at 15:50:45 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "174",
+        "drawSizeNum": 174,
+        "drawCRS": 816
+    }
 ]
