@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "276",
-        "drawDate": "2023-12-19",
-        "drawDateFull": "December 19, 2023",
-        "drawDateTime": "December 19, 2023 at 14:44:00 UTC",
-        "drawName": "Trade occupations (Version 1)",
-        "drawSizeStr": "1,000",
-        "drawSizeNum": 1000,
-        "drawCRS": 425
-    },
-    {
         "drawNumber": "277",
         "drawDate": "2023-12-20",
         "drawDateFull": "December 20, 2023",
@@ -498,5 +488,15 @@
         "drawSizeStr": "174",
         "drawSizeNum": 174,
         "drawCRS": 816
+    },
+    {
+        "drawNumber": "326",
+        "drawDate": "2024-11-19",
+        "drawDateFull": "November 19, 2024",
+        "drawDateTime": "November 19, 2024 at 14:38:41 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "400",
+        "drawSizeNum": 400,
+        "drawCRS": 539
     }
 ]
