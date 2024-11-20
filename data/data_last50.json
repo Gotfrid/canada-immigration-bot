@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "277",
-        "drawDate": "2023-12-20",
-        "drawDateFull": "December 20, 2023",
-        "drawDateTime": "December 20, 2023 at 15:55:23 UTC",
-        "drawName": "Transport occupations (Version 1)",
-        "drawSizeStr": "670",
-        "drawSizeNum": 670,
-        "drawCRS": 435
-    },
-    {
         "drawNumber": "278",
         "drawDate": "2023-12-21",
         "drawDateFull": "December 21, 2023",
@@ -498,5 +488,15 @@
         "drawSizeStr": "400",
         "drawSizeNum": 400,
         "drawCRS": 539
+    },
+    {
+        "drawNumber": "327",
+        "drawDate": "2024-11-20",
+        "drawDateFull": "November 20, 2024",
+        "drawDateTime": "November 20, 2024 at 15:06:25 UTC",
+        "drawName": "Healthcare occupations (Version 1)",
+        "drawSizeStr": "3,000",
+        "drawSizeNum": 3000,
+        "drawCRS": 463
     }
 ]

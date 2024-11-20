@@ -3268,5 +3268,15 @@
         "drawSizeStr": "400",
         "drawSizeNum": 400,
         "drawCRS": 539
+    },
+    {
+        "drawNumber": "327",
+        "drawDate": "2024-11-20",
+        "drawDateFull": "November 20, 2024",
+        "drawDateTime": "November 20, 2024 at 15:06:25 UTC",
+        "drawName": "Healthcare occupations (Version 1)",
+        "drawSizeStr": "3,000",
+        "drawSizeNum": 3000,
+        "drawCRS": 463
     }
 ]
