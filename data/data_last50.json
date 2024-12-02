@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "278",
-        "drawDate": "2023-12-21",
-        "drawDateFull": "December 21, 2023",
-        "drawDateTime": "December 21, 2023 at 14:15:42 UTC",
-        "drawName": "Agriculture and agri-food occupations (Version 1)",
-        "drawSizeStr": "400",
-        "drawSizeNum": 400,
-        "drawCRS": 386
-    },
-    {
         "drawNumber": "279",
         "drawDate": "2024-01-10",
         "drawDateFull": "January 10, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "3,000",
         "drawSizeNum": 3000,
         "drawCRS": 463
+    },
+    {
+        "drawNumber": "328",
+        "drawDate": "2024-12-02",
+        "drawDateFull": "December 2, 2024",
+        "drawDateTime": "December 02, 2024 at 15:37:54 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "676",
+        "drawSizeNum": 676,
+        "drawCRS": 705
     }
 ]

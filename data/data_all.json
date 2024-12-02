@@ -3278,5 +3278,15 @@
         "drawSizeStr": "3,000",
         "drawSizeNum": 3000,
         "drawCRS": 463
+    },
+    {
+        "drawNumber": "328",
+        "drawDate": "2024-12-02",
+        "drawDateFull": "December 2, 2024",
+        "drawDateTime": "December 02, 2024 at 15:37:54 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "676",
+        "drawSizeNum": 676,
+        "drawCRS": 705
     }
 ]
