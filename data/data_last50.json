@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "285",
-        "drawDate": "2024-02-16",
-        "drawDateFull": "February 16, 2024",
-        "drawDateTime": "February 16, 2024 at 15:18:05 UTC",
-        "drawName": "Agriculture and agri-food occupations (Version 1)",
-        "drawSizeStr": "150",
-        "drawSizeNum": 150,
-        "drawCRS": 437
-    },
-    {
         "drawNumber": "286",
         "drawDate": "2024-02-28",
         "drawDateFull": "February 28, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "455",
         "drawSizeNum": 455,
         "drawCRS": 802
+    },
+    {
+        "drawNumber": "335",
+        "drawDate": "2025-02-05",
+        "drawDateFull": "February 5, 2025",
+        "drawDateTime": "February 05, 2025 at 15:34:00 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "4,000",
+        "drawSizeNum": 4000,
+        "drawCRS": 521
     }
 ]
