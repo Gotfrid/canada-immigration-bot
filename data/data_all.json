@@ -3368,5 +3368,15 @@
         "drawSizeStr": "646",
         "drawSizeNum": 646,
         "drawCRS": 750
+    },
+    {
+        "drawNumber": "337",
+        "drawDate": "2025-02-19",
+        "drawDateFull": "February 19, 2025",
+        "drawDateTime": "February 19, 2025 at 16:18:12 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "6,500",
+        "drawSizeNum": 6500,
+        "drawCRS": 428
     }
 ]
