@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "294",
-        "drawDate": "2024-04-23",
-        "drawDateFull": "April 23, 2024",
-        "drawDateTime": "April 23, 2024 at 16:54:59 UTC",
-        "drawName": "General",
-        "drawSizeStr": "2,095",
-        "drawSizeNum": 2095,
-        "drawCRS": 529
-    },
-    {
         "drawNumber": "295",
         "drawDate": "2024-04-24",
         "drawDateFull": "April 24, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "421",
         "drawSizeNum": 421,
         "drawCRS": 727
+    },
+    {
+        "drawNumber": "344",
+        "drawDate": "2025-05-01",
+        "drawDateFull": "May 1, 2025",
+        "drawDateTime": "May 01, 2025 at 16:02:30 UTC",
+        "drawName": "Education occupations (Version 1)",
+        "drawSizeStr": "1,000",
+        "drawSizeNum": 1000,
+        "drawCRS": 479
     }
 ]
