@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "297",
-        "drawDate": "2024-05-31",
-        "drawDateFull": "May 31, 2024",
-        "drawDateTime": "May 31, 2024 at12:48:30 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "3,000",
-        "drawSizeNum": 3000,
-        "drawCRS": 522
-    },
-    {
         "drawNumber": "298",
         "drawDate": "2024-06-19",
         "drawDateFull": "June 19, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "511",
         "drawSizeNum": 511,
         "drawCRS": 706
+    },
+    {
+        "drawNumber": "347",
+        "drawDate": "2025-05-13",
+        "drawDateFull": "May 13, 2025",
+        "drawDateTime": "May 13, 2025 at 14:57:30 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "500",
+        "drawSizeNum": 500,
+        "drawCRS": 547
     }
 ]
