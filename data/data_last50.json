@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "298",
-        "drawDate": "2024-06-19",
-        "drawDateFull": "June 19, 2024",
-        "drawDateTime": "June 19, 2024 at 14:37:26 UTC",
-        "drawName": "Provincial Nominee Program",
-        "drawSizeStr": "1,499",
-        "drawSizeNum": 1499,
-        "drawCRS": 663
-    },
-    {
         "drawNumber": "299",
         "drawDate": "2024-07-02",
         "drawDateFull": "July 2, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "500",
         "drawSizeNum": 500,
         "drawCRS": 547
+    },
+    {
+        "drawNumber": "348",
+        "drawDate": "2025-06-02",
+        "drawDateFull": "June 2, 2025",
+        "drawDateTime": "June 02, 2025 at 17:04:42 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "277",
+        "drawSizeNum": 277,
+        "drawCRS": 726
     }
 ]

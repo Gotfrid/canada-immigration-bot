@@ -3478,5 +3478,15 @@
         "drawSizeStr": "500",
         "drawSizeNum": 500,
         "drawCRS": 547
+    },
+    {
+        "drawNumber": "348",
+        "drawDate": "2025-06-02",
+        "drawDateFull": "June 2, 2025",
+        "drawDateTime": "June 02, 2025 at 17:04:42 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "277",
+        "drawSizeNum": 277,
+        "drawCRS": 726
     }
 ]
