@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "307",
-        "drawDate": "2024-07-31",
-        "drawDateFull": "July 31, 2024",
-        "drawDateTime": "July 31, 2024 at 14:48:13 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "5,000",
-        "drawSizeNum": 5000,
-        "drawCRS": 510
-    },
-    {
         "drawNumber": "308",
         "drawDate": "2024-08-13",
         "drawDateFull": "August 13, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "202",
         "drawSizeNum": 202,
         "drawCRS": 788
+    },
+    {
+        "drawNumber": "357",
+        "drawDate": "2025-07-22",
+        "drawDateFull": "July 22, 2025",
+        "drawDateTime": "July 12, 2025 at 16:27:45 UTC",
+        "drawName": "Healthcare and social services occupations (Version 2)",
+        "drawSizeStr": "4,000",
+        "drawSizeNum": 4000,
+        "drawCRS": 475
     }
 ]
