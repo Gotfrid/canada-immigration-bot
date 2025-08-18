@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "360",
-        "drawDate": "2025-08-08",
-        "drawDateFull": "August 8, 2025",
-        "drawDateTime": "August 08, 2025 at 15:36:25 UTC",
-        "drawName": "French language proficiency (Version 1)",
-        "drawSizeStr": "2,500",
-        "drawSizeNum": 2500,
-        "drawCRS": 481
+        "drawNumber": "361",
+        "drawDate": "2025-08-18",
+        "drawDateFull": "August 18, 2025",
+        "drawDateTime": "August 18, 2025 at 15:09:26 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "192",
+        "drawSizeNum": 192,
+        "drawCRS": 800
     }
 ]
