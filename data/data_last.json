@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "361",
-        "drawDate": "2025-08-18",
-        "drawDateFull": "August 18, 2025",
-        "drawDateTime": "August 18, 2025 at 15:09:26 UTC",
-        "drawName": "Provincial Nominee Program",
-        "drawSizeStr": "192",
-        "drawSizeNum": 192,
-        "drawCRS": 800
+        "drawNumber": "362",
+        "drawDate": "2025-08-19",
+        "drawDateFull": "August 19, 2025",
+        "drawDateTime": "August 19, 2025 at 14:30:55 UTC",
+        "drawName": "Healthcare and social services occupations (Version 2)",
+        "drawSizeStr": "2,500",
+        "drawSizeNum": 2500,
+        "drawCRS": 470
     }
 ]
