@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "321",
-        "drawDate": "2024-10-23",
-        "drawDateFull": "October 23, 2024",
-        "drawDateTime": "October 23, 2024 at 14:48:28 UTC",
-        "drawName": "Trade occupations (Version 1)",
-        "drawSizeStr": "1,800",
-        "drawSizeNum": 1800,
-        "drawCRS": 433
-    },
-    {
         "drawNumber": "322",
         "drawDate": "2024-11-12",
         "drawDateFull": "November 12, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "1,000",
         "drawSizeNum": 1000,
         "drawCRS": 534
+    },
+    {
+        "drawNumber": "371",
+        "drawDate": "2025-10-06",
+        "drawDateFull": "October 6, 2025",
+        "drawDateTime": "October 06, 2025 at 13:59:15 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "4,500",
+        "drawSizeNum": 4500,
+        "drawCRS": 432
     }
 ]
