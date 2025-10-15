@@ -3728,5 +3728,15 @@
         "drawSizeStr": "345",
         "drawSizeNum": 345,
         "drawCRS": 778
+    },
+    {
+        "drawNumber": "373",
+        "drawDate": "2025-10-15",
+        "drawDateFull": "October 15, 2025",
+        "drawDateTime": "October 15, 2025 15:55:18 UTC",
+        "drawName": "Healthcare and social services occupations (Version 2)",
+        "drawSizeStr": "2,500",
+        "drawSizeNum": 2500,
+        "drawCRS": 472
     }
 ]
