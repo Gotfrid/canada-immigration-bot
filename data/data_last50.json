@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "329",
-        "drawDate": "2024-12-03",
-        "drawDateFull": "December 3, 2024",
-        "drawDateTime": "December 03, 2024 at 15:44:17 UTC",
-        "drawName": "French language proficiency (Version 1)",
-        "drawSizeStr": "800",
-        "drawSizeNum": 800,
-        "drawCRS": 466
-    },
-    {
         "drawNumber": "330",
         "drawDate": "2024-12-16",
         "drawDateFull": "December 16, 2024",
@@ -498,5 +488,15 @@
         "drawSizeStr": "1,000",
         "drawSizeNum": 1000,
         "drawCRS": 533
+    },
+    {
+        "drawNumber": "379",
+        "drawDate": "2025-11-14",
+        "drawDateFull": "November 14, 2025",
+        "drawDateTime": "November 14, 2025 at 11:53:39 UTC",
+        "drawName": "Healthcare and social services occupations (Version 2)",
+        "drawSizeStr": "3,500",
+        "drawSizeNum": 3500,
+        "drawCRS": 462
     }
 ]
