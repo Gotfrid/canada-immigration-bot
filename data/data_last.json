@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "381",
-        "drawDate": "2025-11-26",
-        "drawDateFull": "November 26, 2025",
-        "drawDateTime": "November 26, 2025 at 11:59:05 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "1,000",
-        "drawSizeNum": 1000,
-        "drawCRS": 531
+        "drawNumber": "382",
+        "drawDate": "2025-11-28",
+        "drawDateFull": "November 28, 2025",
+        "drawDateTime": "November 28, 2025 at 11:41:31 UTC",
+        "drawName": "French language proficiency (Version 1)",
+        "drawSizeStr": "6,000",
+        "drawSizeNum": 6000,
+        "drawCRS": 408
     }
 ]
