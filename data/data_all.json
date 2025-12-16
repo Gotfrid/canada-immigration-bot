@@ -3868,5 +3868,15 @@
         "drawSizeStr": "399",
         "drawSizeNum": 399,
         "drawCRS": 731
+    },
+    {
+        "drawNumber": "387",
+        "drawDate": "2025-12-16",
+        "drawDateFull": "December 16, 2025",
+        "drawDateTime": "December 16, 2025 at 15:10:56 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "5,000",
+        "drawSizeNum": 5000,
+        "drawCRS": 515
     }
 ]
