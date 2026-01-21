@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "342",
-        "drawDate": "2025-04-14",
-        "drawDateFull": "April 14, 2025",
-        "drawDateTime": "April 14, 2025 at 13:49:47 UTC",
-        "drawName": "Provincial Nominee Program",
-        "drawSizeStr": "825",
-        "drawSizeNum": 825,
-        "drawCRS": 764
-    },
-    {
         "drawNumber": "343",
         "drawDate": "2025-04-28",
         "drawDateFull": "April 28, 2025",
@@ -498,5 +488,15 @@
         "drawSizeStr": "681",
         "drawSizeNum": 681,
         "drawCRS": 746
+    },
+    {
+        "drawNumber": "392",
+        "drawDate": "2026-01-21",
+        "drawDateFull": "January 21, 2026",
+        "drawDateTime": "January 21, 2026 at 12:37:42 UTC",
+        "drawName": "Canadian Experience Class",
+        "drawSizeStr": "6,000",
+        "drawSizeNum": 6000,
+        "drawCRS": 509
     }
 ]
