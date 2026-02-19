@@ -3968,5 +3968,15 @@
         "drawSizeStr": "6,000",
         "drawSizeNum": 6000,
         "drawCRS": 508
+    },
+    {
+        "drawNumber": "397",
+        "drawDate": "2026-02-19",
+        "drawDateFull": "February 19, 2026",
+        "drawDateTime": "February 19, 2026 at 14:24:23 UTC",
+        "drawName": "Physicians with Canadian Work Experience, 2026-Version 1",
+        "drawSizeStr": "391",
+        "drawSizeNum": 391,
+        "drawCRS": 169
     }
 ]
