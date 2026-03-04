@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "351",
-        "drawDate": "2025-06-12",
-        "drawDateFull": "June 12, 2025",
-        "drawDateTime": "June 12, 2025 at 14:06:31 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "3,000",
-        "drawSizeNum": 3000,
-        "drawCRS": 529
-    },
-    {
         "drawNumber": "352",
         "drawDate": "2025-06-23",
         "drawDateFull": "June 23, 2025",
@@ -498,5 +488,15 @@
         "drawSizeStr": "4,000",
         "drawSizeNum": 4000,
         "drawCRS": 508
+    },
+    {
+        "drawNumber": "401",
+        "drawDate": "2026-03-04",
+        "drawDateFull": "March 4, 2026",
+        "drawDateTime": "March 4, 2026 at 11:55:47 UTC",
+        "drawName": "French-Language proficiency 2026-Version 2",
+        "drawSizeStr": "5,500",
+        "drawSizeNum": 5500,
+        "drawCRS": 397
     }
 ]
