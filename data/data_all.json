@@ -4018,5 +4018,15 @@
         "drawSizeStr": "5,500",
         "drawSizeNum": 5500,
         "drawCRS": 397
+    },
+    {
+        "drawNumber": "402",
+        "drawDate": "2026-03-05",
+        "drawDateFull": "March 5, 2026",
+        "drawDateTime": "March 5, 2026 at 11:49:49 UTC",
+        "drawName": "Senior managers with Canadian Work Experience, 2026-Version 1",
+        "drawSizeStr": "250",
+        "drawSizeNum": 250,
+        "drawCRS": 429
     }
 ]
