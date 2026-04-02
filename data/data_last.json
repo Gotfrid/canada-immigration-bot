@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "407",
-        "drawDate": "2026-03-31",
-        "drawDateFull": "March 31, 2026",
-        "drawDateTime": "March 31, 2026 at 10:53:56 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "2,250",
-        "drawSizeNum": 2250,
-        "drawCRS": 509
+        "drawNumber": "408",
+        "drawDate": "2026-04-02",
+        "drawDateFull": "April 2, 2026",
+        "drawDateTime": "April 2, 2026 at 13:39:04 UTC",
+        "drawName": "Trades Occupations, 2026-Version 3",
+        "drawSizeStr": "3,000",
+        "drawSizeNum": 3000,
+        "drawCRS": 477
     }
 ]
