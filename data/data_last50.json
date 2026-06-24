@@ -1,15 +1,5 @@
 [
     {
-        "drawNumber": "371",
-        "drawDate": "2025-10-06",
-        "drawDateFull": "October 6, 2025",
-        "drawDateTime": "October 06, 2025 at 13:59:15 UTC",
-        "drawName": "French language proficiency (Version 1)",
-        "drawSizeStr": "4,500",
-        "drawSizeNum": 4500,
-        "drawCRS": 432
-    },
-    {
         "drawNumber": "372",
         "drawDate": "2025-10-14",
         "drawDateFull": "October 14, 2025",
@@ -498,5 +488,15 @@
         "drawSizeStr": "4,000",
         "drawSizeNum": 4000,
         "drawCRS": 516
+    },
+    {
+        "drawNumber": "421",
+        "drawDate": "2026-06-24",
+        "drawDateFull": "June 24, 2026",
+        "drawDateTime": "June 24, 2026 at 14:00:30 UTC",
+        "drawName": "Physicians with Canadian Work Experience, 2026-Version 1",
+        "drawSizeStr": "271",
+        "drawSizeNum": 271,
+        "drawCRS": 223
     }
 ]

@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "420",
-        "drawDate": "2026-06-23",
-        "drawDateFull": "June 23, 2026",
-        "drawDateTime": "June 23, 2026 at 12:52:12 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "4,000",
-        "drawSizeNum": 4000,
-        "drawCRS": 516
+        "drawNumber": "421",
+        "drawDate": "2026-06-24",
+        "drawDateFull": "June 24, 2026",
+        "drawDateTime": "June 24, 2026 at 14:00:30 UTC",
+        "drawName": "Physicians with Canadian Work Experience, 2026-Version 1",
+        "drawSizeStr": "271",
+        "drawSizeNum": 271,
+        "drawCRS": 223
     }
 ]
