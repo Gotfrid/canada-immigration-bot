@@ -4348,5 +4348,15 @@
         "drawSizeStr": "300",
         "drawSizeNum": 300,
         "drawCRS": 470
+    },
+    {
+        "drawNumber": "435",
+        "drawDate": "2026-08-17",
+        "drawDateFull": "August 17, 2026",
+        "drawDateTime": "August 17, 2026 at 12:33:42 UTC",
+        "drawName": "Provincial Nominee Program",
+        "drawSizeStr": "442",
+        "drawSizeNum": 442,
+        "drawCRS": 760
     }
 ]
