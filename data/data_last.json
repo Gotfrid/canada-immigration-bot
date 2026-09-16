@@ -1,12 +1,12 @@
 [
     {
-        "drawNumber": "443",
-        "drawDate": "2026-09-15",
-        "drawDateFull": "September 15, 2026",
-        "drawDateTime": "September 15, 2026 at 10:21:41 UTC",
-        "drawName": "Canadian Experience Class",
-        "drawSizeStr": "2,000",
-        "drawSizeNum": 2000,
-        "drawCRS": 519
+        "drawNumber": "444",
+        "drawDate": "2026-09-16",
+        "drawDateFull": "September 16, 2026",
+        "drawDateTime": "September 16, 2026 at 12:44:28 UTC",
+        "drawName": "Senior managers with Canadian Work Experience, 2026-Version 1",
+        "drawSizeStr": "250",
+        "drawSizeNum": 250,
+        "drawCRS": 389
     }
 ]
