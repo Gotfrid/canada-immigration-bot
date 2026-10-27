@@ -4518,5 +4518,15 @@
         "drawSizeStr": "792",
         "drawSizeNum": 792,
         "drawCRS": 761
+    },
+    {
+        "drawNumber": "452",
+        "drawDate": "2026-10-27",
+        "drawDateFull": "October 27, 2026",
+        "drawDateTime": "October 27, 2026 at 10:17:26 UTC",
+        "drawName": "French-Language proficiency 2026-Version 2",
+        "drawSizeStr": "5,000",
+        "drawSizeNum": 5000,
+        "drawCRS": 407
     }
 ]
